@@ -13,6 +13,10 @@ import java.net.URL;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// test if greeting endpoint should work as expected 
+
+// need to add or create our own tests 
+
 @SpringBootTest(classes = App.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class AppTests {
 
