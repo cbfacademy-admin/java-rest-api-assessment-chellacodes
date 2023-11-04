@@ -32,43 +32,81 @@ public class SelfAssessmentUserDetails {
 
     }
 
-    public String getFirstName() {
+    // get method 
+        public String getFirstName() {
+            return firstName;
+        }
+    // set method to allow value of string to be passed as firstName
+    // contructor for method to allow string to be inputted as value
+        public void setFirstName(String firstName) {
+        this.firstName = firstName; 
+        }
 
-        return firstName;
-    }
 
-     public String getLastName() { 
+        public String getLastName() { 
         return lastName; 
-    }
+        }
+        public void setLastName(String lastName) {
+            this.lastName = lastName;   
+        }
 
-    public int getYearOfBirth() { 
+
+        public int getYearOfBirth() { 
         return yearOfBirth; 
-    }
-    
-    public String getContactNumber() {
-        return contactNumber; 
-    }
+        }
+        public void setYearOfBirth(int yearOfBirth) {
+            this.yearOfBirth = yearOfBirth;   
+        }
 
 
-    public boolean getAnswer1() {
+        public String getContactNumber() {
+            return contactNumber; 
+        }
+        public void setContactNumber(String contactNumber) {
+            this.contactNumber = contactNumber;
+        }
+
+
+        public boolean getAnswer1() {
         return answer1;
-    }
+        }
+        public void setAnswer1(boolean answer1) {
+            this.answer1 = answer1; 
+        }
 
-    public boolean getAnswer2() {
+
+        public boolean getAnswer2() {
         return answer2;
-    }
+        }
+        public void setAnswer2(boolean answer2) {
+            this.answer2 = answer2;
+        }
 
-    public boolean getAnswer3() {
+
+        public boolean getAnswer3() {
         return answer3;
-    }
+        }
+        public void setAnswer3(boolean answer3) {
+            this.answer3 = answer3;
+        }
 
-    public boolean getAnswer4() {
+
+        public boolean getAnswer4() {
         return answer4;
-    }
+        }
+        public void setAnswer4(boolean answer4) {
+            this.answer4 = answer4;
+        }
+        
 
-    public boolean getAnswer5() {
+        public boolean getAnswer5() {
         return answer5;
-    }
+        }
+        public void setAnswer5(boolean answer5) {
+            this.answer5 = answer5; 
+        }
+
+
 
 
 
