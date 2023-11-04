@@ -178,8 +178,15 @@ SelfAssessmentUserDetails userDetails = new SelfAssessmentUserDetails("Jane" , "
         }
 
 
+// test that the toString method returns the user inputted recorded. 
+    @Test
+    @DisplayName("tests the toString method to return the values inputted when called")
+        public void testToString() {
+            String expected = "Self assessment details - {Jane , Doe , 2000 , 07590673402 , false , false , true , true , true }";
+            String actual = userDetails.toString(); 
 
-
+            assertEquals(expected, actual);
+        }
 
 }
 

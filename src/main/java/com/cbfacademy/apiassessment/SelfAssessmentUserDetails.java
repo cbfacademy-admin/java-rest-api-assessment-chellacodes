@@ -97,7 +97,7 @@ public class SelfAssessmentUserDetails {
         public void setAnswer4(boolean answer4) {
             this.answer4 = answer4;
         }
-        
+
 
         public boolean getAnswer5() {
         return answer5;
@@ -107,7 +107,11 @@ public class SelfAssessmentUserDetails {
         }
 
 
+        // toString merthod to return list of values inputted when called 
+        @Override public String toString() {
 
+            return "Self assessment details - {" + firstName + " , " + lastName + " , " + yearOfBirth + " , " + contactNumber + " , " + answer1 + " , " + answer2 + " , " + answer3 + " , " + answer4 + " , " + answer5 + " }"; 
+        }
 
 
 
