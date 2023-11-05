@@ -2,7 +2,8 @@ package com.cbfacademy.apiassessment;
 
 public class SelfAssessmentUserDetails {
 
-    public String firstName; 
+    private String userID;
+    private String firstName; 
     private String lastName;
     private int yearOfBirth;
     private String contactNumber; 
@@ -17,9 +18,9 @@ public class SelfAssessmentUserDetails {
     public SelfAssessmentUserDetails() {}
 
 
-    public SelfAssessmentUserDetails(String firstName, String lastName, int yearOfBirth, String contactNumber, boolean answer1, boolean answer2, boolean answer3, boolean answer4, boolean answer5) {
+    public SelfAssessmentUserDetails(String userID, String firstName, String lastName, int yearOfBirth, String contactNumber, boolean answer1, boolean answer2, boolean answer3, boolean answer4, boolean answer5) {
 
-        
+        this.userID = userID; 
         this.firstName = firstName;
         this.lastName = lastName;
         this.yearOfBirth = yearOfBirth;
@@ -31,6 +32,15 @@ public class SelfAssessmentUserDetails {
         this.answer5 = answer5; 
 
     }
+
+    
+
+        public String getUserID() {
+        return userID;
+        }
+        public void setUserID(String userID) {
+        this.userID = userID;
+        }
 
     // get method 
         public String getFirstName() {

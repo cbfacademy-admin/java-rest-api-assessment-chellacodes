@@ -4,17 +4,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 
 @DisplayName(value = "The Self Assessment Methods should ")
 public class SelfAssessmentUserDetailsTest {
 
-SelfAssessmentUserDetails userDetails = new SelfAssessmentUserDetails("Jane" , "Doe", 2000, "07590673402", false , false , true , true , true);   
+SelfAssessmentUserDetails userDetails = new SelfAssessmentUserDetails("CJ01234" , "Jane" , "Doe", 2000, "07590673402", false , false , true , true , true);   
 
 
 // Below I am testing the get() method for returning the values; firstName, lastName, yearOfBirth, answer1, answer2, answer3 , answer 4 , answer 5. 
+
+
+    @Test
+    @DisplayName("return userID when get userID is used")
+        public void testGetUserID() {
+            String userID = userDetails.getUserID();
+            assertEquals("CJ01234", userID);
+        }
 
     @Test
     @DisplayName("returns firstName when get firstName is used")
@@ -92,6 +97,18 @@ SelfAssessmentUserDetails userDetails = new SelfAssessmentUserDetails("Jane" , "
 
 
 // below i am running tests to test the set methods from the Self Assessment user details class 
+
+
+
+    @Test
+    @DisplayName("sets value of user name when setUserName is used")
+        public void testSetUserName() {
+
+            userDetails.setUserID("JD12345");
+            String userID = userDetails.getUserID();
+            assertEquals("JD12345", userID);
+        }
+
 
     @Test
     @DisplayName("sets value of first name when setFirstName is used")
