@@ -122,7 +122,7 @@ public class SelfAssessmentUserDetails {
         // toString merthod to return list of values inputted when called 
         @Override public String toString() {
 
-            return "Self assessment details - {" + firstName + " , " + lastName + " , " + yearOfBirth + " , " + contactNumber + " , " + answer1 + " , " + answer2 + " , " + answer3 + " , " + answer4 + " , " + answer5 + " }"; 
+            return "Self assessment details - {" + userID + firstName + " , " + lastName + " , " + yearOfBirth + " , " + contactNumber + " , " + answer1 + " , " + answer2 + " , " + answer3 + " , " + answer4 + " , " + answer5 + " }"; 
         }
 
 

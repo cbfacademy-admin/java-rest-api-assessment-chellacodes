@@ -57,6 +57,7 @@ public class SelfAssessmentUserProgramme {
 				System.out.print("What is your contact number?"); 
 
 				String contactNumber = input.nextLine(); 
+				input.nextLine(); 
 				
 				System.out.println("Do you need physical care and support due to difficulties managing with any of the following; personal care, accessing the community, getting in and out of bed, drink and meal prep?");
 				
@@ -142,7 +143,7 @@ public class SelfAssessmentUserProgramme {
 			System.out.println("3: Update Self Assessment");
 			System.out.println("4: Search User");
 			System.out.println("5: Display list of completed Self Assessments");
-			System.out.println("9: Exit program");
+			System.out.println("6: Exit program");
 			System.out.print("Enter your selection : ");
 		}
 		
