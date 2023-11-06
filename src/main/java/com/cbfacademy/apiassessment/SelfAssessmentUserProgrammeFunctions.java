@@ -3,6 +3,8 @@ package com.cbfacademy.apiassessment;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+// this class contains methods for functions for the Self Assessment Programme 
+
 public class SelfAssessmentUserProgrammeFunctions {
 
     LinkedList<SelfAssessmentUserDetails> listOfSelfAssesementInput; 
@@ -115,9 +117,15 @@ public class SelfAssessmentUserProgrammeFunctions {
             else {
                 System.out.println("Self assessment user record not found");
             }
+            }
 
-
-
+            public void display() {
+                if (listOfSelfAssesementInput.isEmpty()) {
+                    System.out.println("No records found");
+                }
+                for (SelfAssessmentUserDetails userRecord : listOfSelfAssesementInput) {
+                    System.out.println(userRecord.toString()); 
+                }
             }
         }
 
@@ -134,5 +142,5 @@ public class SelfAssessmentUserProgrammeFunctions {
 
 
 
-    }
+    
 

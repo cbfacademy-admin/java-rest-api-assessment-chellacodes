@@ -1,5 +1,7 @@
 package com.cbfacademy.apiassessment;
 
+// class containing getters and setters for to take input of values 
+
 public class SelfAssessmentUserDetails {
 
     private String userID;
