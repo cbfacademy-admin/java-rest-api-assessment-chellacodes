@@ -1,6 +1,10 @@
 package com.cbfacademy.apiassessment;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.UUID;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,17 +12,19 @@ import org.junit.jupiter.api.Test;
 @DisplayName(value = "The Self Assessment Methods should ")
 public class SelfAssessmentUserDetailsTest {
 
-SelfAssessmentUserDetails userDetails = new SelfAssessmentUserDetails("CJ01234" , "Jane" , "Doe", 2000, "07590673402", false , false , true , true , true);   
-
-
+    UUID testUUID = UUID.randomUUID();
+    SelfAssessmentUserDetails userDetails = new SelfAssessmentUserDetails(testUUID, "Jane", "Doe", 2000, "07590673402", false, false, true, true, true); 
 // Below I am testing the get() method for returning the values; firstName, lastName, yearOfBirth, answer1, answer2, answer3 , answer 4 , answer 5. 
 
 
     @Test
-    @DisplayName("return userID when get userID is used")
+    @DisplayName("return userID when getuserID is used")
         public void testGetUserID() {
-            String userID = userDetails.getUserID();
-            assertEquals("CJ01234", userID);
+
+            UUID userID = userDetails.getUserID();
+            
+            assertNull(userID);
+            assertTrue(userID instanceof UUID); 
         }
 
     @Test
@@ -64,7 +70,7 @@ SelfAssessmentUserDetails userDetails = new SelfAssessmentUserDetails("CJ01234" 
         }
 
     @Test
-    @DisplayName("return answer2 when getAnswer1 is used")
+    @DisplayName("return answer2 when getAnswer2 is used")
         public void testGetAnswer2() {
 
             boolean answer2 = userDetails.getAnswer2();
@@ -72,7 +78,7 @@ SelfAssessmentUserDetails userDetails = new SelfAssessmentUserDetails("CJ01234" 
         }
 
     @Test
-    @DisplayName("return answer3 when getAnswer1 is used")
+    @DisplayName("return answer3 when getAnswer3 is used")
         public void testGetAnswer3() {
 
             boolean answer3 = userDetails.getAnswer3();
@@ -80,7 +86,7 @@ SelfAssessmentUserDetails userDetails = new SelfAssessmentUserDetails("CJ01234" 
         }
 
     @Test
-    @DisplayName("return answer3 when getAnswer1 is used")
+    @DisplayName("return answer4 when getAnswer4 is used")
         public void testGetAnswer4() {
 
             boolean answer4 = userDetails.getAnswer4();
@@ -88,7 +94,7 @@ SelfAssessmentUserDetails userDetails = new SelfAssessmentUserDetails("CJ01234" 
         }
 
     @Test
-    @DisplayName("return answer3 when getAnswer1 is used")
+    @DisplayName("return answer5 when getAnswer5 is used")
         public void testGetAnswer5() {
 
             boolean answer5 = userDetails.getAnswer3();
@@ -99,15 +105,6 @@ SelfAssessmentUserDetails userDetails = new SelfAssessmentUserDetails("CJ01234" 
 // below i am running tests to test the set methods from the Self Assessment user details class 
 
 
-
-    @Test
-    @DisplayName("sets value of user name when setUserName is used")
-        public void testSetUserName() {
-
-            userDetails.setUserID("JD12345");
-            String userID = userDetails.getUserID();
-            assertEquals("JD12345", userID);
-        }
 
 
     @Test
@@ -199,7 +196,7 @@ SelfAssessmentUserDetails userDetails = new SelfAssessmentUserDetails("CJ01234" 
     @Test
     @DisplayName("tests the toString method to return the values inputted when called")
         public void testToString() {
-            String expected = "Self assessment details - {Jane , Doe , 2000 , 07590673402 , false , false , true , true , true }";
+            String expected = "Self assessment details - {" + testUUID + "Jane , Doe , 2000 , 07590673402 , false , false , true , true , true }";
             String actual = userDetails.toString(); 
 
             assertEquals(expected, actual);

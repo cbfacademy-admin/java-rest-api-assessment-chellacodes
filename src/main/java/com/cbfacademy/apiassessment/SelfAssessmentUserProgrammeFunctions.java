@@ -2,6 +2,7 @@ package com.cbfacademy.apiassessment;
 
 import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.UUID;
 
 // this class contains methods for functions for the Self Assessment Programme 
 
@@ -24,7 +25,7 @@ public class SelfAssessmentUserProgrammeFunctions {
         }   
         }
 
-        public boolean find(String userID) {
+        public boolean find(UUID userID) {
 
             for(SelfAssessmentUserDetails l  : listOfSelfAssesementInput) {
 
@@ -37,7 +38,7 @@ public class SelfAssessmentUserProgrammeFunctions {
             return false; 
         }
     
-        public void delete (String recUserID) {
+        public void delete (UUID recUserID) {
 
             SelfAssessmentUserDetails recordDelete = null; 
 
@@ -56,7 +57,7 @@ public class SelfAssessmentUserProgrammeFunctions {
             }
         }
 
-        public SelfAssessmentUserDetails findRecord(String userID) {
+        public SelfAssessmentUserDetails findRecord(UUID userID) {
 
             for (SelfAssessmentUserDetails l : listOfSelfAssesementInput) {
 
@@ -67,12 +68,10 @@ public class SelfAssessmentUserProgrammeFunctions {
             return null; 
         }
 
-        public void update (String id, Scanner input) {
+        public void update (UUID id, Scanner input) {
             if (find(id)) {
                 SelfAssessmentUserDetails userRecord = findRecord(id); 
 
-                System.out.print("What is the new User ID number?");
-                String userID = input.nextLine(); 
 
                 System.out.print("What is the new First Name?");
                 String firstName = input.nextLine(); 
@@ -101,7 +100,6 @@ public class SelfAssessmentUserProgrammeFunctions {
                 System.out.print("What is the your new answer to Question 5?"); 
                 boolean answer5 = input.nextBoolean();
 
-                userRecord.setUserID(userID);
                 userRecord.setFirstName(firstName);
                 userRecord.setLastName(lastName);
                 userRecord.setYearOfBirth(yearOfBirth);
@@ -127,6 +125,9 @@ public class SelfAssessmentUserProgrammeFunctions {
                     System.out.println(userRecord.toString()); 
                 }
             }
+
+			public void update(String uuidIDUpdate) {
+			}
         }
 
 
