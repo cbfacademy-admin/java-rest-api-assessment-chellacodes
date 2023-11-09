@@ -12,20 +12,6 @@ public class SelfAssessmentUserProgramme {
 
         SelfAssessmentUserDetails userRecord = new SelfAssessmentUserDetails(); 
 
-
-		userRecord.getUserID();
-        userRecord.getFirstName();
-		userRecord.getLastName();
-		userRecord.getYearOfBirth();
-		userRecord.getContactNumber();
-		userRecord.getAnswer1();
-		userRecord.getAnswer2();
-		userRecord.getAnswer3();
-		userRecord.getAnswer4();
-		userRecord.getAnswer5();
-
-		userProgramme.add(userRecord); 
-
 		try (Scanner input = new Scanner(System.in)) {
 			int option = 0; 
 
@@ -37,44 +23,45 @@ public class SelfAssessmentUserProgramme {
 
 				case 1: 
 
-					System.out.print("Press any key to generate your userID"); 
+					System.out.print("Press any key to generate your userID "); 
 					input.nextLine(); 
+					input.nextLine();
 					UUID userID = userRecord.getUserID(); 
 					System.out.print("Your user ID is *make note of this!* = " + userID);
 					input.nextLine();
 					
-					System.out.print("What is your first name?"); 
+					System.out.print("What is your first name? "); 
 
 					String firstName = input.nextLine(); 
 					
-					System.out.print("What is your last name?"); 
+					System.out.print("What is your last name? "); 
 
 					String lastName = input.nextLine(); 
 					
-					System.out.print("What is your year of birth?"); 
+					System.out.print("What is your year of birth? "); 
 
 					int yearOfBirth = input.nextInt();
 				
-					System.out.print("What is your contact number?"); 
+					System.out.print("What is your contact number? "); 
 
 					String contactNumber = input.nextLine(); 
 					input.nextLine(); 
 					
-					System.out.println("Do you need physical care and support due to difficulties managing with any of the following; personal care, accessing the community, getting in and out of bed, drink and meal prep?");
+					System.out.println("Do you need physical care and support due to difficulties managing with any of the following; personal care, accessing the community, getting in and out of bed, drink and meal prep? ");
 					
 					boolean answer1 = input.nextBoolean(); 
 						
-					System.out.println("Do you have any difficulties ascending and / or descending the stairs?");
+					System.out.println("Do you have any difficulties ascending and / or descending the stairs? ");
 					boolean answer2 = input.nextBoolean();
 						
-					System.out.println("Do you have any difficulties accessing your bathing facilities?");
+					System.out.println("Do you have any difficulties accessing your bathing facilities? ");
 					boolean answer3 = input.nextBoolean();
 						
 
-					System.out.println("Do you have difficulties accessing your property?");
+					System.out.println("Do you have difficulties accessing your property? ");
 					boolean answer4 = input.nextBoolean();
 						
-					System.out.println("Do you have difficulties transferring on and off the bed, chair, toilet, sofa?");
+					System.out.println("Do you have difficulties transferring on and off the bed, chair, toilet, sofa? ");
 					boolean answer5 = input.nextBoolean(); 
 
 					userRecord = new SelfAssessmentUserDetails(userID, firstName, lastName, yearOfBirth, contactNumber, answer1, answer2, answer3, answer4, answer5);
@@ -103,19 +90,19 @@ public class SelfAssessmentUserProgramme {
 
 				case 3:
 					
-					System.out.print("What is your user name?"); 
+					System.out.print("What is your your user name?"); 
 					String uuidIDUpdate = input.nextLine(); 	
-				try {
-						userProgramme.update(uuidIDUpdate);
-				} 
+					try {
+						UUID updateRecod = UUID.fromString(uuidIDUpdate);
+						userProgramme.update(updateRecod, input);
+					} 
 
-				catch (IllegalArgumentException e) {
+					catch (IllegalArgumentException e) {
 					System.out.println("Invalid userID");
 
-				}
+					}
 
-					break; 
-
+					
 				case 4: 
 
 					System.out.print("What is your user name?"); 
@@ -123,7 +110,7 @@ public class SelfAssessmentUserProgramme {
 			
 					try {
 						UUID findRecord = UUID.fromString(uuidInputFindRecord); 
-						userProgramme.delete(findRecord); 
+						userProgramme.find(findRecord); 
 					} 
 
 					catch (IllegalArgumentException e) {
@@ -138,15 +125,12 @@ public class SelfAssessmentUserProgramme {
 
 				case 6: 
 					System.out.println("End of Self Assessment. Thank you for your time");
-
-
-					System.out.println("Invalid input please select options 1 to 6"); 
 					System.exit(0);
 
 					break; 
 				
 				default: 
-					System.out.println("Invalid input");
+					System.out.println(" Invalid input please select options 1 to 6");
 					break; 
 					
 				}

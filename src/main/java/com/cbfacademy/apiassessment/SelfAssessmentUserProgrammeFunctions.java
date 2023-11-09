@@ -72,19 +72,6 @@ public class SelfAssessmentUserProgrammeFunctions {
             if (find(id)) {
                 SelfAssessmentUserDetails userRecord = findRecord(id); 
 
-
-                System.out.print("What is the new First Name?");
-                String firstName = input.nextLine(); 
-
-                System.out.print("What is the new last Name?"); 
-                String lastName = input.nextLine(); 
-
-                System.out.print("What is the new year of birth?"); 
-                int yearOfBirth = input.nextInt();
-
-                System.out.print("What is the new contact number?"); 
-                String contactNumber = input.nextLine(); 
-
                 System.out.print("What is the your new answer to Question 1?"); 
                 boolean answer1 = input.nextBoolean(); 
 
@@ -99,11 +86,7 @@ public class SelfAssessmentUserProgrammeFunctions {
 
                 System.out.print("What is the your new answer to Question 5?"); 
                 boolean answer5 = input.nextBoolean();
-
-                userRecord.setFirstName(firstName);
-                userRecord.setLastName(lastName);
-                userRecord.setYearOfBirth(yearOfBirth);
-                userRecord.setContactNumber(contactNumber);
+            
                 userRecord.setAnswer1(answer1);
                 userRecord.setAnswer2(answer2);
                 userRecord.setAnswer3(answer3);
@@ -126,8 +109,6 @@ public class SelfAssessmentUserProgrammeFunctions {
                 }
             }
 
-			public void update(String uuidIDUpdate) {
-			}
         }
 
 

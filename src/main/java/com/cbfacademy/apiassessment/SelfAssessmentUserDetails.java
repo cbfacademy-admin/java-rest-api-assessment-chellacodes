@@ -90,8 +90,9 @@ public class SelfAssessmentUserDetails {
         // @GetMapping so the user can see the questions "get the questions"
 
         public boolean getAnswer1() {
-        return answer1;
+            return answer1;
         }
+
         public void setAnswer1(boolean answer1) {
             this.answer1 = answer1; 
         }
