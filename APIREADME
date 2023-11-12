@@ -1,0 +1,9 @@
+My API is ; 
+
+GET REQUEST - Is retrieveing a list of all questions / user input 
+
+POST REQUEST - Creates a new self assessment user and stores in JSON file 
+
+PUT REQUEST - Updates an existing self assessment user // 
+
+DELETE EQUEST - Deletes a self assessmnet user
