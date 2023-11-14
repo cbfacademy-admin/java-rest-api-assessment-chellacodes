@@ -5,11 +5,13 @@
         "lastName": "Johnson",
         "yearOfBirth": 1998, 
         "contactNumber": "01159172829", 
-        "answer1": false,
-        "answer2": false,
-        "answer3": false,
-        "answer4": false,
-        "answer5": false
+        "question 1": false,
+        "question 2": false,
+        "question 3": false,
+        "question 4": false,
+        "question 5": false
 
     }
 ]
+
+
