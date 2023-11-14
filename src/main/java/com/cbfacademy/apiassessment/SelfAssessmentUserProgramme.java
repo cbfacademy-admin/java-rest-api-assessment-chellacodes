@@ -90,7 +90,7 @@ public class SelfAssessmentUserProgramme {
 
 				case 3:
 					
-					System.out.print("What is your your user name?"); 
+					System.out.print("What is your your user name? "); 
 					String uuidIDUpdate = input.nextLine(); 	
 					try {
 						UUID updateRecod = UUID.fromString(uuidIDUpdate);
@@ -118,7 +118,7 @@ public class SelfAssessmentUserProgramme {
 					}
 
 					break;
-
+// display method working in interface. 
 				case 5: 
 					userProgramme.display();
 					break; 

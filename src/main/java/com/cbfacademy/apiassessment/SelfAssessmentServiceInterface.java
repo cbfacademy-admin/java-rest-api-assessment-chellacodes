@@ -5,7 +5,12 @@ package com.cbfacademy.apiassessment;
 
 // can we implement self assessment functions in here? 
 
-public interface SelfAssessmentServiceInterface {
+// public interface SelfAssessmentServiceInterface {
+
+//     public LinkedList<SelfAssessmentUserDetails> getSelfAssessment() {
+//         r
+
+
+//     }
 
     
-}

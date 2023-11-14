@@ -21,62 +21,76 @@ import com.google.gson.reflect.TypeToken;
 @Service
 public class SelfAssessmentServiceForAPI {
 
-    private final String jsonFile = "selfAssessmentData.json";
-    private final Gson gson;
 
-    LinkedList<SelfAssessmentUserDetails> listOfSelfAssesementInput; 
+    private final SelfAssessmentUserProgrammeFunctions programmeFunctions; 
 
-    public SelfAssessmentServiceForAPI() {
-        listOfSelfAssesementInput = readDataFromFile();
-        gson = new GsonBuilder().setPrettyPrinting().create();
-    }
-    
+    public SelfAssessmentServiceForAPI(SelfAssessmentUserProgrammeFunctions programmeFunctions) {
+        this.programmeFunctions = programmeFunctions; 
 
-// code below is reading data from the JSON file and returning as a list 
-    private LinkedList<SelfAssessmentUserDetails> readDataFromFile() {
-        try(Reader reader = new FileReader(jsonFile)) {
-            Type listType = new TypeToken<LinkedList<SelfAssessmentUserDetails>> {}.getType(); 
-        return gson.fromJson(reader, listType); 
-        // if file does not exist returns an empty list
-        } catch (FileNotFoundException e) {
-            return new LinkedList<>(); 
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new LinkedList<>(); 
-        }
     }
 
-// code below is a method to write the dta from the self assessment user input into the Json file 
-    private void writeDataFromSelfAssessmentToFile() {
-        try(Writer writer = new FileWriter(jsonFile)){
-            gson.toJson(listOfSelfAssesementInput, writer); 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    
-    public void createUserSelfAssessment(SelfAssessmentUserDetails recordOfDetails) {
-        add(recordOfDetails);
-        writeDataFromSelfAssessmentToFile();
-        }
-
-
-    public void displayUserSelfAssessmentInputAsJSON() {
-        listOfSelfAssesementInput = readDataFromFile(); 
+    public LinkedList<SelfAssessmentUserDetails> retrieveSelfAssessment() {
+        return programmeFunctions.retrieveSelfAssessment(); 
     }
 
 
-    public void deleteUser(UUID id) {
-        delete(id);
-        writeDataFromSelfAssessmentToFile();
-    }
 
-    public LinkedList<SelfAssessmentUserDetails> getSelfAssessmentUserDetails() {
-    return listOfSelfAssesementInput;
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
+
+//     public SelfAssessmentServiceForAPI(SelfAssessmentUserProgrammeFunctions programmeFunctions) {
+//         this.programmeFunctions = programmeFunctions; 
+//     }
+
+//     public SelfAssessmentServiceForAPI() {
+//         listOfSelfAssesementInput = readDataFromFile();
+//         gson = new GsonBuilder().setPrettyPrinting().create();
+//     }
+
+    
+//     public void createUserSelfAssessment(SelfAssessmentUserDetails recordOfDetails) {
+//         programmeFunctions.add(recordOfDetails);
+//         writeDataFromSelfAssessmentToFile();
+//         }
+
+        
+//     public void displayUserSelfAssessmentInputAsJSON() {
+//         listOfSelfAssesementInput = readDataFromFile(); 
+//     }
+
+
+//     public void deleteUser(UUID id) {
+//         programmeFunctions.delete(id);
+//         writeDataFromSelfAssessmentToFile();
+//     }
+
+//     public LinkedList<SelfAssessmentUserDetails> getSelfAssessment() {
+//     return listOfSelfAssesementInput;
+//     }
+
+// }
 
     
 

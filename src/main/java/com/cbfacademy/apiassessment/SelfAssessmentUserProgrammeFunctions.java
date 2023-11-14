@@ -1,24 +1,47 @@
 package com.cbfacademy.apiassessment;
 
+import com.google.gson.reflect.TypeToken;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
+import java.lang.reflect.Type;
 import java.util.LinkedList;
-import java.util.Scanner;
 import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 
 // this class contains methods for functions for the Self Assessment Programme 
 
 public class SelfAssessmentUserProgrammeFunctions {
 
-    LinkedList<SelfAssessmentUserDetails> listOfSelfAssesementInput; 
+    private LinkedList<SelfAssessmentUserDetails> listOfSelfAssesementInput; 
+    private final String jsonFilePath = "selfAssessmentData.json";
+    private final Gson gson;
 
         public SelfAssessmentUserProgrammeFunctions() {
 
-        listOfSelfAssesementInput = new LinkedList<>();
+        listOfSelfAssesementInput = readDataFromFile();
+        gson = new GsonBuilder().setPrettyPrinting().create(); 
+
+        }
+
+        public LinkedList<SelfAssessmentUserDetails> retrieveSelfAssessment() {
+            return listOfSelfAssesementInput; 
         }
     
         public void add(SelfAssessmentUserDetails recordOfDetails) {
 
         if (!find(recordOfDetails.getUserID())) {
             listOfSelfAssesementInput.add(recordOfDetails);
+            writeDataFromSelfAssessmentToFile();
         }
         else {
             System.out.println("Self Assessment Record already exists");
@@ -29,7 +52,7 @@ public class SelfAssessmentUserProgrammeFunctions {
 
             for(SelfAssessmentUserDetails l  : listOfSelfAssesementInput) {
 
-                if (l.getUserID() == userID) {
+                if (l.getUserID().equals(userID)) {
     
                     System.out.println(l);
                     return true;
@@ -42,26 +65,23 @@ public class SelfAssessmentUserProgrammeFunctions {
 
             SelfAssessmentUserDetails recordDelete = null; 
 
-            for(SelfAssessmentUserDetails ll : listOfSelfAssesementInput) {
-
-                if (ll.getUserID() == recUserID) {
-                    recordDelete = ll; 
+            for(SelfAssessmentUserDetails l : listOfSelfAssesementInput) {
+                if (l.getUserID().equals(recUserID)){
+                    recordDelete = l; 
                 }
             }
             if (recordDelete == null) {
                 System.out.println("Invalid userID , please try again");
-            }
-            else {
+            } else {
                 listOfSelfAssesementInput.remove(recordDelete); 
                 System.out.println("Self Assessment User Record Deleted ");
+                writeDataFromSelfAssessmentToFile();
             }
         }
 
         public SelfAssessmentUserDetails findRecord(UUID userID) {
-
             for (SelfAssessmentUserDetails l : listOfSelfAssesementInput) {
-
-                if (l.getUserID() == userID) {
+                if (l.getUserID().equals(userID)) {
                     return l; 
                 }
             }
@@ -72,16 +92,16 @@ public class SelfAssessmentUserProgrammeFunctions {
             if (find(id)) {
                 SelfAssessmentUserDetails userRecord = findRecord(id); 
 
-                System.out.print("What is the your new answer to Question 1?"); 
+                System.out.print("Do you need physical care and support due to difficulties managing with any of the following; personal care, accessing the community, getting in and out of bed, drink and meal prep? "); 
                 boolean answer1 = input.nextBoolean(); 
 
-                System.out.print("What is the your new answer to Question 2?"); 
+                System.out.print("Do you have any difficulties ascending and / or descending the stairs? "); 
                 boolean answer2 = input.nextBoolean();
 
-                System.out.print("What is the your new answer to Question 3?"); 
+                System.out.print("Do you have any difficulties accessing your bathing facilities? "); 
                 boolean answer3 = input.nextBoolean();
 
-                System.out.print("What is the your new answer to Question 4?"); 
+                System.out.print("Do you have difficulties accessing your property?"); 
                 boolean answer4 = input.nextBoolean();
 
                 System.out.print("What is the your new answer to Question 5?"); 
@@ -93,23 +113,46 @@ public class SelfAssessmentUserProgrammeFunctions {
                 userRecord.setAnswer4(answer4);
                 userRecord.setAnswer5(answer5);
                 System.out.println("Self Asssessment User Record Updated Succesfully"); 
-            }
-
-            else {
+                writeDataFromSelfAssessmentToFile();
+            } else {
                 System.out.println("Self assessment user record not found");
             }
             }
 
-            public void display() {
-                if (listOfSelfAssesementInput.isEmpty()) {
-                    System.out.println("No records found");
-                }
-                for (SelfAssessmentUserDetails userRecord : listOfSelfAssesementInput) {
-                    System.out.println(userRecord.toString()); 
-                }
+        public void display() {
+            if (listOfSelfAssesementInput.isEmpty()) {
+                System.out.println("No records found");
             }
-
+            for (SelfAssessmentUserDetails userRecord : listOfSelfAssesementInput) {
+                System.out.println(userRecord.toString()); 
+            }
         }
+
+            
+// code below is reading data from the JSON file and returning as a list 
+            private LinkedList<SelfAssessmentUserDetails> readDataFromFile() {
+                try(Reader reader = new FileReader(jsonFilePath)) {
+                Type listType = new TypeToken<LinkedList<SelfAssessmentUserDetails>>() {
+                }.getType();
+                return gson.fromJson(reader, listType); 
+// if file does not exist returns an empty list
+            } catch (FileNotFoundException e) {
+                return new LinkedList<>(); 
+            } catch (IOException e) {
+                e.printStackTrace();
+                return new LinkedList<>(); 
+            }
+        }
+
+            private void writeDataFromSelfAssessmentToFile() {
+            try(Writer writer = new FileWriter(jsonFilePath)){
+            gson.toJson(listOfSelfAssesementInput, writer); 
+            } catch (IOException e) {
+            e.printStackTrace();
+            }
+        }
+    
+}
 
 
 
