@@ -10,12 +10,12 @@ import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.LinkedList;
+import java.util.Scanner;
 import java.util.UUID;
-
-import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 
 
 // this class contains methods for functions for the Self Assessment Programme 
@@ -127,6 +127,13 @@ public class SelfAssessmentUserProgrammeFunctions {
                 System.out.println(userRecord.toString()); 
             }
         }
+
+        // public void displayAsJsonArray(){
+        //     if(SelfAssessmentUserDetails userRecord : listOfSelfAssesementInput) {
+        //         JsonObject jsonRecord = new JsonObject();
+        //         jsonRecord.addProperty(jsonFilePath, jsonFilePath);
+        //     }
+        // }
 
             
 // code below is reading data from the JSON file and returning as a list 
