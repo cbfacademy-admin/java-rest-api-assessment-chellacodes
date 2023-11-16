@@ -1,15 +1,15 @@
 [
     {
-        "userID": "" ,
-        "firstName": "Chella",
-        "lastName": "Johnson",
-        "yearOfBirth": 1998, 
-        "contactNumber": "01159172829", 
-        "Do you need physical care and support due to difficulties managing with any of the following; personal care, accessing the community, getting in and out of bed, drink and meal prep?": false,
-        "Do you have any difficulties ascending and / or descending the stairs?": false,
-        "Do you have any difficulties accessing your bathing facilities?": false,
-        "Do you have difficulties accessing your property?": false,
-        "Do you have difficulties transferring on and off the bed, chair, toilet, sofa?": false
+        "userID": "5fb8270e-a490-4d98-8386-e6fd08a55dd2" ,
+        "firstName": "",
+        "lastName": "",
+        "yearOfBirth": 0, 
+        "contactNumber": "", 
+        "answer1": false,
+        "answer2": false,
+        "answer3": false,
+        "answer4": false,
+        "answer5": false
     }
 ]
 

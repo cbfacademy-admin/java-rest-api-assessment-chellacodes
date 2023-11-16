@@ -6,6 +6,7 @@ import java.util.LinkedList;
 // import javax.swing.RepaintManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 // import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 // import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,15 +18,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+@SpringBootApplication
 @RestController
 @RequestMapping("/api/activities-of-daily-living-self-assessment")
 
 public class SelfAssessmentController {
 
 // end points @GetMapping 
+    SelfAssessmentServiceForAPI selfAssessmentService;
+    public  SelfAssessmentController(SelfAssessmentServiceForAPI selfAssessmentService) {
+        this.selfAssessmentService = selfAssessmentService;
+    }
 
-    @Autowired
-    SelfAssessmentServiceForAPI selfAssessmentService; 
+// 
 
 // sends a request to retreieve the json file with the self assessment 
         @GetMapping("/selfAssessment")

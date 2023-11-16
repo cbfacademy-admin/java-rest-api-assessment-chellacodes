@@ -13,23 +13,34 @@ import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.UUID;
 
+import org.springframework.stereotype.Component;
+import org.springframework.util.ResourceUtils;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-
+@Component
 
 // this class contains methods for functions for the Self Assessment Programme 
 
 public class SelfAssessmentUserProgrammeFunctions {
 
     private LinkedList<SelfAssessmentUserDetails> listOfSelfAssesementInput; 
-    private final String jsonFilePath = "selfAssessmentData.json";
+    private String jsonFilePath;
     private final Gson gson;
 
         public SelfAssessmentUserProgrammeFunctions() {
-
-        listOfSelfAssesementInput = readDataFromFile();
+        try {
+        jsonFilePath = ResourceUtils.getFile("classpath:selfAssessmentData.json").getAbsolutePath();
+        }
+        catch (FileNotFoundException e) {
+            jsonFilePath = "selfAssessment.json";
+        }
+        
         gson = new GsonBuilder().setPrettyPrinting().create(); 
+        listOfSelfAssesementInput = readDataFromFile();
+
+        
 
         }
 

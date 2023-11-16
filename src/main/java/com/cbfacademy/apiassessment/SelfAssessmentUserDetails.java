@@ -18,6 +18,8 @@ public class SelfAssessmentUserDetails {
     private Boolean answer5; 
 
     // default constructor 
+    // non of my internal values are being processed 
+    // need to set default values 
 
     public SelfAssessmentUserDetails() {}
 
@@ -26,16 +28,16 @@ public class SelfAssessmentUserDetails {
 // this.userID = userID set as UUID ?  this.uuid = uuid.randomid  this.userID = UUID.randomUUID();
 // randomUUID method. change 
 
-        this.userID = userID; 
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.yearOfBirth = yearOfBirth;
-        this.contactNumber = contactNumber; 
-        this.answer1 = answer1;
-        this.answer2 = answer2;
-        this.answer3 = answer3;
-        this.answer4 = answer4;
-        this.answer5 = answer5; 
+        this.userID = UUID.randomUUID(); 
+        this.firstName = "firstName";
+        this.lastName = "lastName";
+        this.yearOfBirth = 1998;
+        this.contactNumber = "contactNumber"; 
+        this.answer1 = false;
+        this.answer2 = false;
+        this.answer3 = false;
+        this.answer4 = false;
+        this.answer5 = false; 
 
     }
 

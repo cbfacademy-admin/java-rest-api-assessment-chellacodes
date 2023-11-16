@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
