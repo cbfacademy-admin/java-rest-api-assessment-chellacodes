@@ -6,7 +6,7 @@ import java.util.LinkedList;
 // import javax.swing.RepaintManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+// import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 // import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,16 +28,16 @@ public class SelfAssessmentController {
     SelfAssessmentServiceForAPI selfAssessmentService; 
 
 // sends a request to retreieve the json file with the self assessment 
-    // @GetMapping("/selfAssessment")
-    // public ResponseEntity <LinkedList<SelfAssessmentUserDetails>> retrieveSelfAssessment(){
-    //     LinkedList<SelfAssessmentUserDetails> selfAssessment = selfAssessmentService.retrieveSelfAssessment();
-    //     return ResponseEntity.ok(selfAssessment);
-    // }
+        @GetMapping("/selfAssessment")
+         public ResponseEntity <LinkedList<SelfAssessmentUserDetails>> retrieveSelfAssessment(){
+         LinkedList<SelfAssessmentUserDetails> selfAssessment = selfAssessmentService.retrieveSelfAssessment();
+         return ResponseEntity.ok(selfAssessment);
+         }
 
-    @GetMapping("/selfAssessment")
-    public ResponseEntity <LinkedList<SelfAssessmentUserDetails>> retrieveSelfAssessment() {
-        return new ResponseEntity<>(selfAssessmentService.retrieveSelfAssessment(), HttpStatus.OK);
-    }
+    // @GetMapping("/selfAssessment")
+    // public ResponseEntity <LinkedList<SelfAssessmentUserDetails>> retrieveSelfAssessment() {
+    //     return new ResponseEntity<>(selfAssessmentService.retrieveSelfAssessment(), HttpStatus.OK);
+    // }
 
 
 // creates the user self assessment
