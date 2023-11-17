@@ -1,10 +1,10 @@
 [
     {
         "userID": "5fb8270e-a490-4d98-8386-e6fd08a55dd2" ,
-        "firstName": "",
-        "lastName": "",
+        "firstName": "What is your first Name",
+        "lastName": "What is your last Name",
         "yearOfBirth": 0, 
-        "contactNumber": "", 
+        "contactNumber": "What is your contactNumber", 
         "answer1": false,
         "answer2": false,
         "answer3": false,
