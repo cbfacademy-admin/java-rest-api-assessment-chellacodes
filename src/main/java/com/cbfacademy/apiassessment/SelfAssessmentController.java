@@ -60,9 +60,10 @@ public class SelfAssessmentController {
 
         
         @PostMapping("/selfAssessmentData/addUser")
-             public ResponseEntity<Void> createUserDetails(@RequestBody SelfAssessmentUserDetails userDetails) {
+             public ResponseEntity<String> createUserDetails(@RequestBody SelfAssessmentUserDetails userDetails) {
                 selfAssessmentService.createUserSelfAssessment(userDetails);
-                return ResponseEntity.status(HttpStatus.CREATED).build();
+                String successMessage = "Self Assessment added successfully";
+                return ResponseEntity.status(HttpStatus.CREATED).body(successMessage);
         }
 
         
