@@ -1,5 +1,6 @@
 package com.cbfacademy.apiassessment;
 
+import java.util.LinkedList;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,16 +16,13 @@ public class ControllerClass {
 
     // GET Request to retrieve self-assessment as a JSON file
     @GetMapping("/questions")
-    public ResponseEntity<Set<String>> getSelfAssessmentQuestions() {
-        Set<String> questions = selfAssessmentService.getSelfAssessmentQuestions();
-        if (questions != null && !questions.isEmpty()) {
-            return ResponseEntity.ok(questions);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+         public ResponseEntity <LinkedList<UserDetails>> retrieveSelfAssessment(){
+         LinkedList<UserDetails> selfAssessment = selfAssessmentService.retrieveSelfAssessmentQuestions();
+         return ResponseEntity.ok(selfAssessment);
+         }
     }
     // POST Request to create user self-assessment
-    @PostMapping
+    @PostMapping("/questions")
     public ResponseEntity<Void> createUserSelfAssessment(@RequestBody UserDetails userDetails) {
         selfAssessmentService.createUserSelfAssessment(userDetails);
         return ResponseEntity.ok().build();
@@ -38,7 +36,7 @@ public class ControllerClass {
     // }
 
     // PUT Request to update user self-assessment
-    @PutMapping("/{userId}")
+    @PutMapping("/{userID}")
     public ResponseEntity<Void> updateUserSelfAssessment(
             @PathVariable String userId,
             @RequestBody UserDetails updatedDetails) {
@@ -47,7 +45,7 @@ public class ControllerClass {
     }
 
     // DELETE Request to delete user self-assessment
-    @DeleteMapping("/{userId}")
+    @DeleteMapping("/{userID}")
     public ResponseEntity<Void> deleteUserSelfAssessment(@PathVariable String userId) {
         selfAssessmentService.deleteUserSelfAssessment(userId);
         return ResponseEntity.ok().build();
