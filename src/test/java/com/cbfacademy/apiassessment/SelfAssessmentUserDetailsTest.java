@@ -1,10 +1,7 @@
 package com.cbfacademy.apiassessment;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.UUID;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,19 +9,15 @@ import org.junit.jupiter.api.Test;
 @DisplayName(value = "The Self Assessment Methods should ")
 public class SelfAssessmentUserDetailsTest {
 
-    UUID testUUID = UUID.randomUUID();
-    SelfAssessmentUserDetails userDetails = new SelfAssessmentUserDetails(testUUID, "Jane", "Doe", 2000, "07590673402", false, false, true, true, true); 
+    
+    SelfAssessmentUserDetails userDetails = new SelfAssessmentUserDetails(1, "Jane", "Doe", 2000, "07590673402", false, false, true, true, true); 
 // Below I am testing the get() method for returning the values; firstName, lastName, yearOfBirth, answer1, answer2, answer3 , answer 4 , answer 5. 
 
-
     @Test
-    @DisplayName("return userID when getuserID is used")
+    @DisplayName("returns userID when get userID is used")
         public void testGetUserID() {
-
-            UUID userID = userDetails.getUserID();
-            
-            assertNull(userID);
-            assertTrue(userID instanceof UUID); 
+            Integer userID = userDetails.getUserID();
+            assertEquals(1, userID);
         }
 
     @Test
@@ -196,7 +189,7 @@ public class SelfAssessmentUserDetailsTest {
     @Test
     @DisplayName("tests the toString method to return the values inputted when called")
         public void testToString() {
-            String expected = "Self assessment details - {" + testUUID + "Jane , Doe , 2000 , 07590673402 , false , false , true , true , true }";
+            String expected = "Self assessment details - { 1, Jane , Doe , 2000 , 07590673402 , false , false , true , true , true }";
             String actual = userDetails.toString(); 
 
             assertEquals(expected, actual);

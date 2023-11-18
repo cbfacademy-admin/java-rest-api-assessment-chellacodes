@@ -1,21 +1,10 @@
 package com.cbfacademy.apiassessment;
 
-import java.util.UUID;
 
 // class containing getters and setters for to take input of values 
 
 public class SelfAssessmentUserDetails {
 
-    private UUID userID;
-    private String firstName; 
-    private String lastName;
-    private int yearOfBirth;
-    private String contactNumber; 
-    private Boolean answer1; 
-    private Boolean answer2; 
-    private Boolean answer3;
-    private Boolean answer4; 
-    private Boolean answer5; 
 
     // default constructor 
     // non of my internal values are being processed 
@@ -24,33 +13,49 @@ public class SelfAssessmentUserDetails {
     public SelfAssessmentUserDetails() {}
 
 
-    public SelfAssessmentUserDetails(UUID userID, String firstName, String lastName, int yearOfBirth, String contactNumber, boolean answer1, boolean answer2, boolean answer3, boolean answer4, boolean answer5) {
+    public SelfAssessmentUserDetails(Integer userID, String firstName, String lastName, Integer yearOfBirth, String contactNumber, boolean answer1, boolean answer2, boolean answer3, boolean answer4, boolean answer5) {
 // this.userID = userID set as UUID ?  this.uuid = uuid.randomid  this.userID = UUID.randomUUID();
 // randomUUID method. change 
 
-        this.userID = UUID.randomUUID(); 
-        this.firstName = "firstName";
-        this.lastName = "lastName";
-        this.yearOfBirth = 1998;
-        this.contactNumber = "contactNumber"; 
-        this.answer1 = false;
-        this.answer2 = false;
-        this.answer3 = false;
-        this.answer4 = false;
-        this.answer5 = false; 
+        super();
+        this.userID = userID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.yearofBirth = yearOfBirth;
+        this.contactNumber = contactNumber; 
+        this.answer1 = answer1;
+        this.answer2 = answer2;
+        this.answer3 = answer3;
+        this.answer4 = answer4;
+        this.answer5 = answer5; 
 
     }
 
-    
+        private Integer userID;
+        private String firstName; 
+        private String lastName; 
+        private Integer yearofBirth;
+        private String contactNumber; 
+        private Boolean answer1; 
+        private Boolean answer2;
+        private Boolean answer3; 
+        private Boolean answer4; 
+        private Boolean answer5; 
 
-        public UUID getUserID() {
-            UUID userID = UUID.randomUUID();
+// toString merthod to return list of values inputted when called 
+    @Override
+    public String toString() {
+        return "Self assessment details - { " + userID + firstName + " , " + lastName + " , " + yearofBirth + " , " + contactNumber + " , " + answer1 + " , " + answer2 + " , " + answer3 + " , " + answer4 + " , " + answer5 + " }"; 
+    }
+
+        public Integer getUserID() {
             return userID; 
         }
 
-        // wouldnt want to have a setter as you wouldnt want it to be changed. 
-        // public void setUserID(String userID) {
-        // this.userID = userID;
+// wouldnt want to have a setter as you wouldnt want it to be changed. 
+         public void setUserID(Integer userID) {
+             this.userID = userID; 
+         }
         
 
     // get method 
@@ -73,10 +78,10 @@ public class SelfAssessmentUserDetails {
 
 
         public int getYearOfBirth() { 
-        return yearOfBirth; 
+        return yearofBirth; 
         }
         public void setYearOfBirth(int yearOfBirth) {
-            this.yearOfBirth = yearOfBirth;   
+            this.yearofBirth = yearOfBirth;   
         }
 
 
@@ -132,11 +137,7 @@ public class SelfAssessmentUserDetails {
         }
 
 
-        // toString merthod to return list of values inputted when called 
-        @Override public String toString() {
-
-            return "Self assessment details - { " + userID + firstName + " , " + lastName + " , " + yearOfBirth + " , " + contactNumber + " , " + answer1 + " , " + answer2 + " , " + answer3 + " , " + answer4 + " , " + answer5 + " }"; 
-        }
+        
 
 
 
