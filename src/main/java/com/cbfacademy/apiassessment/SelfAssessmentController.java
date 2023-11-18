@@ -10,6 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.ResponseEntity;
 // import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 // import org.springframework.web.bind.annotation.PathVariable;
 // import org.springframework.web.bind.annotation.PostMapping;
 // import org.springframework.web.bind.annotation.PutMapping;
@@ -40,12 +42,22 @@ public class SelfAssessmentController {
          }
 
 // sends request to retreive the json file with self assessment data 
-        @GetMapping("/selfAssessmentQuestions/selfAssessmentData")
+        @GetMapping("/selfAssessmentData")
          public ResponseEntity <LinkedList<SelfAssessmentUserDetails>> retrieveSelfAssessmentData(){
          LinkedList<SelfAssessmentUserDetails> selfAssessment = selfAssessmentService.retrieveSelfAssessment();
          return ResponseEntity.ok(selfAssessment);
          }
 
+
+// // post request to add users details 
+
+          @PostMapping("/selfAssessmentData/addUser")
+            public ResponseEntity<String> addUserDetails(@RequestBody SelfAssessmentUserDetails userDetails) {
+            selfAssessmentService.createUserSelfAssessment(userDetails);
+            return ResponseEntity.ok("Self Assessment added successfully");
+            }
+
+            
 
 // creates the user self assessment
 //     @PostMapping("/selfAssessment")

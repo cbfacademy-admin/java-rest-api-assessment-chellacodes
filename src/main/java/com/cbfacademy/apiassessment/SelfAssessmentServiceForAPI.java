@@ -26,9 +26,11 @@ public class SelfAssessmentServiceForAPI {
         return programmeFunctions.retrieveSelfAssessment();
     }
          
-    public void createUserSelfAssessment(SelfAssessmentUserDetails answerFromUser) {
-         programmeFunctions.add(answerFromUser);
+    public void createUserSelfAssessment(SelfAssessmentUserDetails userDetails) {
+         programmeFunctions.add(userDetails);
     }
+
+
 
     // public void updateUserSelfAssessment(UUID id, Scanner input) {
     //     programmeFunctions.update(id, input); 
