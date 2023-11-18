@@ -6,6 +6,7 @@ import java.util.LinkedList;
 // import javax.swing.RepaintManager;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpStatus;
 // import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 // import org.springframework.web.bind.annotation.DeleteMapping;
@@ -51,21 +52,20 @@ public class SelfAssessmentController {
 
 // // post request to add users details 
 
-          @PostMapping("/selfAssessmentData/addUser")
-            public ResponseEntity<String> addUserDetails(@RequestBody SelfAssessmentUserDetails userDetails) {
-            selfAssessmentService.createUserSelfAssessment(userDetails);
-            return ResponseEntity.ok("Self Assessment added successfully");
-            }
+        //   @PostMapping("/selfAssessmentData/addUser")
+        //     public ResponseEntity<String> addUserDetails(@RequestBody SelfAssessmentUserDetails userDetails) {
+        //     selfAssessmentService.createUserSelfAssessment(userDetails);
+        //     return ResponseEntity.ok("Self Assessment added successfully");
+        //     }
 
-            
+        
+        @PostMapping("/selfAssessmentData/addUser")
+             public ResponseEntity<Void> createUserDetails(@RequestBody SelfAssessmentUserDetails userDetails) {
+                selfAssessmentService.createUserSelfAssessment(userDetails);
+                return ResponseEntity.status(HttpStatus.CREATED).build();
+        }
 
-// creates the user self assessment
-//     @PostMapping("/selfAssessment")
-//     public ResponseEntity createUserSelfAssessment(@RequestMapping SelfAssessmentUserDetails answersFromUser) {
-//         selfAssessmentService.createUserSelfAssessment(answersFromUser);
-//         return ResponseEntity.ok().build();
-//     }
-
+        
 
 // // sends request to retreive json file with useful information to answers to the questions 
 //     @GetMapping("/selfAssessment")

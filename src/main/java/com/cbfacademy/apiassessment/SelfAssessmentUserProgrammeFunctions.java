@@ -27,17 +27,17 @@ public class SelfAssessmentUserProgrammeFunctions {
     private LinkedList<Question> questions; 
     private LinkedList<SelfAssessmentUserDetails> userDetailsInput;
 
-    private String jsonFilePath;
+    private String jsonFilePathQuestions;
     private String jsonFilePathUserDetails;
     private final Gson gson;
 
         public SelfAssessmentUserProgrammeFunctions() {
         try {
-        jsonFilePath = ResourceUtils.getFile("classpath:selfAssessmentQuestions.json").getAbsolutePath();
+        jsonFilePathQuestions = ResourceUtils.getFile("classpath:selfAssessmentQuestions.json").getAbsolutePath();
         jsonFilePathUserDetails = ResourceUtils.getFile("classpath:selfAssessmentData.json").getAbsolutePath();
         }
         catch (FileNotFoundException e) {
-            jsonFilePath = "selfAssessmentQuestions.json";
+            jsonFilePathQuestions = "selfAssessmentQuestions.json";
             jsonFilePathUserDetails = "selfAssessmentData.json";
         }
         
@@ -57,10 +57,10 @@ public class SelfAssessmentUserProgrammeFunctions {
             return userDetailsInput;
         }
     
-        public void add(SelfAssessmentUserDetails recordOfDetails) {
+        public void add(SelfAssessmentUserDetails recoUserDetails) {
 
-        if (!find(recordOfDetails.getUserID())) {
-            userDetailsInput.add(recordOfDetails);
+        if (!find(recoUserDetails.getUserID())) {
+            userDetailsInput.add(recoUserDetails);
             writeDataFromSelfAssessmentToFile();
         }
         else {
@@ -69,21 +69,13 @@ public class SelfAssessmentUserProgrammeFunctions {
         }
 
         public boolean find(String userID) {
-
-            for(SelfAssessmentUserDetails l  : userDetailsInput) {
-
-                if (l.getUserID().equals(userID)) {
-    
-                    System.out.println(l);
-                    return true;
-                } 
-            }
-            return false; 
+            return userDetailsInput.stream().anyMatch(l -> l.getUserID().equals(userID));
         }
+    
 
         // code below is reading data from the JSON file and returning as a list 
             private LinkedList<Question> readDataFromFile() {
-                try(Reader reader = new FileReader(jsonFilePath)) {
+                try(Reader reader = new FileReader(jsonFilePathQuestions)) {
                 Type listType = new TypeToken<LinkedList<Question>>() {
                 }.getType();
                 return gson.fromJson(reader, listType); 
@@ -110,6 +102,14 @@ public class SelfAssessmentUserProgrammeFunctions {
             }
 
             }
+
+              private void writeDataFromSelfAssessmentToFile() {
+            try(Writer writer = new FileWriter(jsonFilePathUserDetails)){
+            gson.toJson(userDetailsInput, writer); 
+            } catch (IOException e) {
+            e.printStackTrace();
+            }
+        }
     
         // public void delete (UUID recUserID) {
 
@@ -188,13 +188,7 @@ public class SelfAssessmentUserProgrammeFunctions {
             
 
 
-            private void writeDataFromSelfAssessmentToFile() {
-            try(Writer writer = new FileWriter(jsonFilePath)){
-            gson.toJson(userDetailsInput, writer); 
-            } catch (IOException e) {
-            e.printStackTrace();
-            }
-        }
+          
     
 }
 
