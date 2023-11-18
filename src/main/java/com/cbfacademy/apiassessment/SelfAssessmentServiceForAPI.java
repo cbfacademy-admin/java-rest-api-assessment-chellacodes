@@ -2,10 +2,7 @@ package com.cbfacademy.apiassessment;
 
 
 import java.util.LinkedList;
-import java.util.Scanner;
-import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
@@ -21,21 +18,25 @@ public class SelfAssessmentServiceForAPI {
         this.programmeFunctions = programmeFunctions;   
     }
 
+    public LinkedList<Question> retrieveQuestions() {
+        return programmeFunctions.retrieveSelfAssessmentQuestions(); 
+    }
+
     public LinkedList<SelfAssessmentUserDetails> retrieveSelfAssessment() {
-        return programmeFunctions.retrieveSelfAssessment(); 
+        return programmeFunctions.retrieveSelfAssessment();
     }
          
     public void createUserSelfAssessment(SelfAssessmentUserDetails answerFromUser) {
          programmeFunctions.add(answerFromUser);
     }
 
-    public void updateUserSelfAssessment(UUID id, Scanner input) {
-        programmeFunctions.update(id, input); 
-    }
+    // public void updateUserSelfAssessment(UUID id, Scanner input) {
+    //     programmeFunctions.update(id, input); 
+    // }
 
-    public void deleteUser(UUID id) {
-         programmeFunctions.delete(id);
-     }
+    // public void deleteUser(UUID id) {
+    //      programmeFunctions.delete(id);
+    //  }
 
         
    

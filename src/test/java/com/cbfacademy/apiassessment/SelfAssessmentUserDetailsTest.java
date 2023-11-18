@@ -1,8 +1,7 @@
 package com.cbfacademy.apiassessment;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 import java.util.UUID;
 
@@ -13,7 +12,7 @@ import org.junit.jupiter.api.Test;
 public class SelfAssessmentUserDetailsTest {
 
     UUID testUUID = UUID.randomUUID();
-    SelfAssessmentUserDetails userDetails = new SelfAssessmentUserDetails(testUUID, "Jane", "Doe", 2000, "07590673402", false, false, true, true, true); 
+    SelfAssessmentUserDetails userDetails = new SelfAssessmentUserDetails("123", "Jane", "Doe", 2000, "07590673402", false, false, true, true, true); 
 // Below I am testing the get() method for returning the values; firstName, lastName, yearOfBirth, answer1, answer2, answer3 , answer 4 , answer 5. 
 
 
@@ -21,10 +20,8 @@ public class SelfAssessmentUserDetailsTest {
     @DisplayName("return userID when getuserID is used")
         public void testGetUserID() {
 
-            UUID userID = userDetails.getUserID();
-            
-            assertNull(userID);
-            assertTrue(userID instanceof UUID); 
+            String userID = userDetails.getUserID();
+            assertEquals("123", userID); 
         }
 
     @Test

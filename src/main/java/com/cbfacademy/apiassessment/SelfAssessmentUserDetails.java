@@ -1,12 +1,11 @@
 package com.cbfacademy.apiassessment;
 
-import java.util.UUID;
 
 // class containing getters and setters for to take input of values 
 
 public class SelfAssessmentUserDetails {
 
-    private UUID userID;
+    private String userID;
     private String firstName; 
     private String lastName;
     private int yearOfBirth;
@@ -24,11 +23,11 @@ public class SelfAssessmentUserDetails {
     public SelfAssessmentUserDetails() {}
 
 
-    public SelfAssessmentUserDetails(UUID userID, String firstName, String lastName, int yearOfBirth, String contactNumber, boolean answer1, boolean answer2, boolean answer3, boolean answer4, boolean answer5) {
+    public SelfAssessmentUserDetails(String userID, String firstName, String lastName, int yearOfBirth, String contactNumber, boolean answer1, boolean answer2, boolean answer3, boolean answer4, boolean answer5) {
 // this.userID = userID set as UUID ?  this.uuid = uuid.randomid  this.userID = UUID.randomUUID();
 // randomUUID method. change 
 
-        this.userID = UUID.randomUUID(); 
+        this.userID = "123"; 
         this.firstName = "firstName";
         this.lastName = "lastName";
         this.yearOfBirth = 1998;
@@ -43,8 +42,7 @@ public class SelfAssessmentUserDetails {
 
     
 
-        public UUID getUserID() {
-            UUID userID = UUID.randomUUID();
+        public String getUserID() {
             return userID; 
         }
 
