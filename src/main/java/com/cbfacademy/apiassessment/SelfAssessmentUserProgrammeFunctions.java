@@ -170,13 +170,8 @@ public class SelfAssessmentUserProgrammeFunctions {
         }
     }
 
-    }
+}
     
-
-
-
-        
-
 
 
 

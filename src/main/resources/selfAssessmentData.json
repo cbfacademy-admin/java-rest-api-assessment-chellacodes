@@ -2,8 +2,20 @@
     {
         "userID": "Jane7" ,
         "name": "Jane Doe",
-        "yearOfBirth": 1234, 
+        "yearOfBirth": 1934, 
         "contactNumber": "999", 
+        "answer1": false,
+        "answer2": false,
+        "answer3": false,
+        "answer4": false,
+        "answer5": false
+    },
+
+    {
+        "userID": "John7" ,
+        "name": "John Doe",
+        "yearOfBirth": 1930, 
+        "contactNumber": "111", 
         "answer1": false,
         "answer2": false,
         "answer3": false,

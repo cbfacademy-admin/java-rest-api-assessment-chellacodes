@@ -54,7 +54,23 @@ public class SelfAssessmentResultsController {
 
         return contentBuilder.toString();
     }
+
+    @GetMapping("/over65s") 
+        public ResponseEntity<Long> algorithmGetOver65sAnswer1() {
+            // Call the service to get the count using the new algorithm
+            long count = selfAssessmentService.getOver65sAnswer1();
+            // Return the count in the response
+            return ResponseEntity.ok(count);
+    
+        }
+
+
+
+
+
 }
+
+
 
 
 

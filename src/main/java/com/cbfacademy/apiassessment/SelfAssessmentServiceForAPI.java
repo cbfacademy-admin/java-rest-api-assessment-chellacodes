@@ -2,6 +2,7 @@ package com.cbfacademy.apiassessment;
 
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
@@ -13,10 +14,13 @@ import org.springframework.stereotype.Service;
 public class SelfAssessmentServiceForAPI {
 
 
-    private final SelfAssessmentUserProgrammeFunctions programmeFunctions; 
+    private final SelfAssessmentUserProgrammeFunctions programmeFunctions;
+    private final SearchingAlgorithm searchingAlgorithm; 
 
-    public SelfAssessmentServiceForAPI(SelfAssessmentUserProgrammeFunctions programmeFunctions) {
+
+    public SelfAssessmentServiceForAPI(SelfAssessmentUserProgrammeFunctions programmeFunctions, SearchingAlgorithm searchingAlgorithm) {
         this.programmeFunctions = programmeFunctions;   
+        this.searchingAlgorithm = searchingAlgorithm; 
     }
 
     public LinkedList<Question> retrieveQuestions() {
@@ -45,13 +49,15 @@ public class SelfAssessmentServiceForAPI {
 
         return userDetails.getAnswers();
     }
-        
-   
 
-
-
+    public long getOver65sAnswer1() {
+        List<SelfAssessmentUserDetails> allUsers = programmeFunctions.retrieveSelfAssessments();
+        return searchingAlgorithm.countOver65sReturningFalseToAnswer1(allUsers);
+    }
 
 }
+
+   
 
 
 

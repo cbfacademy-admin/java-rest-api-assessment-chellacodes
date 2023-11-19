@@ -52,25 +52,16 @@ public class SelfAssessmentController {
          return ResponseEntity.ok(selfAssessment);
          }
 
-
-// // post request to add users details 
-
-        //   @PostMapping("/selfAssessmentData/addUser")
-        //     public ResponseEntity<String> addUserDetails(@RequestBody SelfAssessmentUserDetails userDetails) {
-        //     selfAssessmentService.createUserSelfAssessment(userDetails);
-        //     return ResponseEntity.ok("Self Assessment added successfully");
-        //     }
-
         
         @PostMapping("/selfAssessmentData/addUser")
-             public ResponseEntity<String> createUserDetails(@RequestBody SelfAssessmentUserDetails userDetails) {
-                selfAssessmentService.createUserSelfAssessment(userDetails);
-                String successMessage = "Self Assessment added successfully";
-                return ResponseEntity.status(HttpStatus.CREATED).body(successMessage);
+        public ResponseEntity<String> createUserDetails(@RequestBody SelfAssessmentUserDetails userDetails) {
+        selfAssessmentService.createUserSelfAssessment(userDetails);
+        String successMessage = "Self Assessment added successfully";
+        return ResponseEntity.status(HttpStatus.CREATED).body(successMessage);
         }
 
         @PutMapping("/selfAssessmentData/userDetails/{userID}")
-    public ResponseEntity<String> updateUserDetails(@PathVariable String userID, @RequestBody SelfAssessmentUserDetails userDetails) {
+        public ResponseEntity<String> updateUserDetails(@PathVariable String userID, @RequestBody SelfAssessmentUserDetails userDetails) {
         boolean updated = selfAssessmentService.updateUserSelfAssessment(userID, userDetails);
         if (updated) {
             String successMessage = "Self Assessment updated successfully";
@@ -81,35 +72,17 @@ public class SelfAssessmentController {
         }
     }
 
-    @DeleteMapping("/selfAssessmentData/userDetails/{userID}")
-    public ResponseEntity<String> deleteUserDetails(@PathVariable String userID) {
+        @DeleteMapping("/selfAssessmentData/userDetails/{userID}")
+        public ResponseEntity<String> deleteUserDetails(@PathVariable String userID) {
         boolean deleted = selfAssessmentService.deleteUserSelfAssessment(userID);
         if (deleted) {
             String successMessage = "Self Assessment deleted successfully";
-            return ResponseEntity.ok(successMessage);
+        return ResponseEntity.ok(successMessage);
         } else {
             String errorMessage = "Self Assessment not found for userID: " + userID;
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
         }
     }
-
-
-// // sends request to retreive json file with useful information to answers to the questions 
-//     @GetMapping("/selfAssessment")
-
-
-
-
-// // allows user to update there self assessment following having access to the useful information
-//     @PutMapping("")
-//     public ResponseEntity<Void> updateUserSelfAssessment(@PathVariable UUID id, @RequestBody SelfAssessmentUserDetails updateDetails) {
-//         selfAssessmentService.updateUserSelfAssessment(id, updateDetails);
-//         return ResponseEntity.ok().build();
-//     }
-
-
-// // allows user to delete self assessment with there details 
-//     @DeleteMapping("")
 
     
 }
