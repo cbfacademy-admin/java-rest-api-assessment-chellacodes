@@ -6,17 +6,25 @@ A Spring Boot API for managing self assessment user details and returning useful
 
 The SelfAssessmentAPI is an API that provides a platform for users to perform self-assessments based on a set of questions. The project includes classes for managing user details, a service for program functions, and controllers for handling HTTP requests. The API allows users to perform CRUD operations on self-assessment data. It includes features like user creation, updating, and retrieving useful information based on results. 
 
-### Class structure
+## Class structure
+
+### Getters and Setters
 
 SelfAssessmentUserDetails.java
 
 This class represents the details of a user performing a self-assessment. It includes attributes such as userID, name, yearOfBirth, contactNumber, and answers to specific assessment questions. The class also provides methods for retrieving and updating user details.
 
+Question.java
+
+This class represents a set of predefined questions for a self-assessment. It serves as a container for questions related to various aspects of an individual's physical care and accessibility. Each question is encapsulated as a private field with corresponding getter and setter methods.
+
+### Functions
+
 SelfAssessmentUserProgrammeFunctions.java
 
 This class contains methods for program functions related to the Self Assessment Programme. It handles the storage and retrieval of self-assessment questions and user details using JSON files. The class includes methods for adding, updating, and deleting user details.
 
-## Controllers
+### Controllers
 
 SelfAssessmentController.java
 
@@ -26,28 +34,24 @@ SelfAssessmentResultsController.java
 
 The SelfAssessmentResultsController class is another REST controller responsible for handling requests related to self-assessment results. It includes an endpoint for retrieving results based on a user's ID and a specialized endpoint for obtaining the count of users over 65 who answered a specific question.
 
-## Service 
+### Service 
 
 SelfAssessmentServiceForAPI.java
 
 This class serves as the service layer for the SelfAssessmentAPI, containing methods utilized by the controller class. It orchestrates the communication between the controller, program functions, and the searching algorithm.
 
-## Algorithm 
+### Algorithm 
 
 SearchingAlgorithm.java 
 
 This class provides a method to count the number of users over the age of 65 who answered a specific question negatively. This class is designed to work with a list of SelfAssessmentUserDetails objects. The countOver65sReturningFalseToAnswer1 takes a list of user details as input, uses Java streams to filter users born in or before 1957 who answered a specific question (answer1) with false. The method then returns the count of matching users.
 
-## Programme 
+### Programme 
 
 SelfAssessmentUserProgramme.java 
 
-This is the 
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+This class serves as the entry point for the SelfAssessmentAPI application. It uses the Spring Boot @SpringBootApplication annotation to bootstrap the application, making it executable. The class also includes the main method (public static void main(String[] args)) responsible for launching the Spring Boot application.
 
 ## Acknowledgments
 
-Shoud out Coding Black Females for giving me the knowledge and inspiration to complete this project 
+Thank you Coding Black Females for giving me the knowledge and inspiration to complete this project 
