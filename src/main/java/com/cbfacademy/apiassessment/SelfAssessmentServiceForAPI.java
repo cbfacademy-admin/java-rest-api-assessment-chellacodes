@@ -91,36 +91,5 @@ public class SelfAssessmentServiceForAPI {
 
 
 
-
-//     public SelfAssessmentServiceForAPI(SelfAssessmentUserProgrammeFunctions programmeFunctions) {
-//         this.programmeFunctions = programmeFunctions; 
-//     }
-
-//     public SelfAssessmentServiceForAPI() {
-//         listOfSelfAssesementInput = readDataFromFile();
-//         gson = new GsonBuilder().setPrettyPrinting().create();
-//     }
-
-    
-//     public void createUserSelfAssessment(SelfAssessmentUserDetails recordOfDetails) {
-//         programmeFunctions.add(recordOfDetails);
-//         writeDataFromSelfAssessmentToFile();
-//         }
-
-        
-    
-
-
-//     public void deleteUser(UUID id) {
-//         programmeFunctions.delete(id);
-//         writeDataFromSelfAssessmentToFile();
-//     }
-
-//     public LinkedList<SelfAssessmentUserDetails> getSelfAssessment() {
-//     return listOfSelfAssesementInput;
-//     }
-
-// }
-
     
 
