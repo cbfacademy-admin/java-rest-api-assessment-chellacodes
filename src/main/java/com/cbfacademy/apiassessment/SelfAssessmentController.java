@@ -73,7 +73,7 @@ public class SelfAssessmentController {
         }
     }
 
-// 
+// request to delete user, takes in param userID , updates json file in body
         @DeleteMapping("/selfAssessmentData/userDetails/{userID}")
         public ResponseEntity<String> deleteUserDetails(@PathVariable String userID) {
         boolean deleted = selfAssessmentService.deleteUserSelfAssessment(userID);

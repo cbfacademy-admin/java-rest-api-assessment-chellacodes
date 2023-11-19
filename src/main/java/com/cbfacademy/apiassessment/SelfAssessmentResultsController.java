@@ -31,7 +31,6 @@ public class SelfAssessmentResultsController {
 
     private String generateContent(Map<String, Boolean> answers) {
         // Logic to map answers to content
-        // Example: If answer1 is true, include a link
         StringBuilder contentBuilder = new StringBuilder();
         if (!answers.get("answer1")) {
             contentBuilder.append("Here is a useful link if you need physical care and support : [Find your local council to access Adult Social Care](https://www.gov.uk/apply-needs-assessment-social-services)\n");
