@@ -52,6 +52,10 @@ SelfAssessmentUserProgramme.java
 
 This class serves as the entry point for the SelfAssessmentAPI application. It uses the Spring Boot @SpringBootApplication annotation to bootstrap the application, making it executable. The class also includes the main method (public static void main(String[] args)) responsible for launching the Spring Boot application.
 
-## Acknowledgments
+### Link to published PostMan Documentation 
+
+[PostMan Documentation](https://documenter.getpostman.com/view/31214081/2s9Ye8fuov#97f450c0-bbdb-4c7e-b719-cf71bc4944f3)
+      
+### Acknowledgments
 
 Thank you Coding Black Females for giving me the knowledge and inspiration to complete this project 
