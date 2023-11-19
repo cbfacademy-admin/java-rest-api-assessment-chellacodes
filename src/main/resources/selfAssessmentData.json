@@ -1,8 +1,7 @@
 [
     {
         "userID": "Jane7" ,
-        "firstName": "Janes",
-        "lastName": "Does",
+        "name": "Jane Doe",
         "yearOfBirth": 1234, 
         "contactNumber": "999", 
         "answer1": false,

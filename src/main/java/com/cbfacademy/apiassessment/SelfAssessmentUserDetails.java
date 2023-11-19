@@ -1,13 +1,16 @@
 package com.cbfacademy.apiassessment;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 // class containing getters and setters for to take input of values 
 
 public class SelfAssessmentUserDetails {
 
     private String userID;
-    private String firstName; 
-    private String lastName;
+    private String name;
     private int yearOfBirth;
     private String contactNumber; 
     private Boolean answer1; 
@@ -23,24 +26,22 @@ public class SelfAssessmentUserDetails {
     public SelfAssessmentUserDetails() {}
 
 
-    public SelfAssessmentUserDetails(String userID, String firstName, String lastName, int yearOfBirth, String contactNumber, boolean answer1, boolean answer2, boolean answer3, boolean answer4, boolean answer5) {
+    public SelfAssessmentUserDetails(String userID, String name, int yearOfBirth, String contactNumber, boolean answer1, boolean answer2, boolean answer3, boolean answer4, boolean answer5) {
 // this.userID = userID set as UUID ?  this.uuid = uuid.randomid  this.userID = UUID.randomUUID();
 // randomUUID method. change 
 
-        this.userID = "123"; 
-        this.firstName = "firstName";
-        this.lastName = "lastName";
-        this.yearOfBirth = 1998;
-        this.contactNumber = "contactNumber"; 
-        this.answer1 = false;
-        this.answer2 = false;
-        this.answer3 = false;
-        this.answer4 = false;
-        this.answer5 = false; 
+        this.userID = userID; 
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+        this.contactNumber = contactNumber; 
+        this.answer1 = answer1;
+        this.answer2 = answer2;
+        this.answer3 = answer3;
+        this.answer4 = answer4;
+        this.answer5 = answer5;
 
     }
 
-    
 
         public String getUserID() {
             return userID; 
@@ -52,23 +53,14 @@ public class SelfAssessmentUserDetails {
         
 
     // get method 
-        public String getFirstName() {
-            return firstName;
+        public String getName() {
+            return name;
         }
     // set method to allow value of string to be passed as firstName
     // contructor for method to allow string to be inputted as value
-        public void setFirstName(String firstName) {
-        this.firstName = firstName; 
+        public void setName(String name) {
+        this.name = name; 
         }
-
-
-        public String getLastName() { 
-        return lastName; 
-        }
-        public void setLastName(String lastName) {
-            this.lastName = lastName;   
-        }
-
 
         public int getYearOfBirth() { 
         return yearOfBirth; 
@@ -130,10 +122,23 @@ public class SelfAssessmentUserDetails {
         }
 
 
+        @JsonIgnore
+        public Map<String, Boolean> getAnswers() {
+            Map<String, Boolean> answers = new HashMap<>(); 
+            answers.put("answer1", this.answer1);
+            answers.put("answer2", this.answer2);
+            answers.put("answer3", this.answer3);
+            answers.put("answer4", this.answer4);
+            answers.put("answer5", this.answer5);
+            
+            return answers;
+        }
+
+
         // toString merthod to return list of values inputted when called 
         @Override public String toString() {
 
-            return "Self assessment details - { " + userID + firstName + " , " + lastName + " , " + yearOfBirth + " , " + contactNumber + " , " + answer1 + " , " + answer2 + " , " + answer3 + " , " + answer4 + " , " + answer5 + " }"; 
+            return "Self assessment details - { " + userID + " , " + name + " , " + yearOfBirth + " , " + contactNumber + " , " + answer1 + " , " + answer2 + " , " + answer3 + " , " + answer4 + " , " + answer5 + " }"; 
         }
 
 

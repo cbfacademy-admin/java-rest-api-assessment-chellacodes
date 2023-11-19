@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 public class SelfAssessmentUserDetailsTest {
 
     UUID testUUID = UUID.randomUUID();
-    SelfAssessmentUserDetails userDetails = new SelfAssessmentUserDetails("123", "Jane", "Doe", 2000, "07590673402", false, false, true, true, true); 
+    SelfAssessmentUserDetails userDetails = new SelfAssessmentUserDetails("123", "Jane Doe", 2000, "07590673402", false, false, true, true, true); 
 // Below I am testing the get() method for returning the values; firstName, lastName, yearOfBirth, answer1, answer2, answer3 , answer 4 , answer 5. 
 
 
@@ -26,19 +26,11 @@ public class SelfAssessmentUserDetailsTest {
 
     @Test
     @DisplayName("returns firstName when get firstName is used")
-        public void testGetFirstName() {
-            String firstName = userDetails.getFirstName();
-            assertEquals("Jane", firstName);
+        public void testGetName() {
+            String name = userDetails.getName();
+            assertEquals("Jane Doe", name);
         }
-    
 
-    @Test
-    @DisplayName("return lastName when getLastName is used")
-        public void testGetLastName() {
-
-            String lastName = userDetails.getLastName();
-            assertEquals("Doe", lastName);
-        }
 
     @Test
     @DisplayName("return yearOfBirth when getYearOfBirth is used")
@@ -106,22 +98,12 @@ public class SelfAssessmentUserDetailsTest {
 
     @Test
     @DisplayName("sets value of first name when setFirstName is used")
-        public void testSetFirstName() {
+        public void testSetName() {
 
-            userDetails.setFirstName("Chella"); 
+            userDetails.setName("Chella"); 
 
-            String firstName = userDetails.getFirstName(); 
-            assertEquals("Chella", firstName); 
-        }
-
-
-    @Test
-    @DisplayName("sets value of last name when setLastName is used")
-        public void testSetLastName() {
-            
-                userDetails.setLastName("Johnson"); 
-                String lastName = userDetails.getLastName();
-                assertEquals("Johnson", lastName);
+            String name = userDetails.getName(); 
+            assertEquals("Chella", name); 
         }
 
     @Test
@@ -193,7 +175,7 @@ public class SelfAssessmentUserDetailsTest {
     @Test
     @DisplayName("tests the toString method to return the values inputted when called")
         public void testToString() {
-            String expected = "Self assessment details - {" + testUUID + "Jane , Doe , 2000 , 07590673402 , false , false , true , true , true }";
+            String expected = "Self assessment details - {" + " 123 , Jane Doe , 2000 , 07590673402 , false , false , true , true , true }";
             String actual = userDetails.toString(); 
 
             assertEquals(expected, actual);

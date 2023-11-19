@@ -2,6 +2,7 @@ package com.cbfacademy.apiassessment;
 
 
 import java.util.LinkedList;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public class SelfAssessmentServiceForAPI {
     }
 
     public LinkedList<SelfAssessmentUserDetails> retrieveSelfAssessment() {
-        return programmeFunctions.retrieveSelfAssessment();
+        return programmeFunctions.retrieveSelfAssessments();
     }
          
     public void createUserSelfAssessment(SelfAssessmentUserDetails userDetails) {
@@ -39,16 +40,11 @@ public class SelfAssessmentServiceForAPI {
         return programmeFunctions.deleteUserDetails(userID);
     }
 
+    public Map<String, Boolean> getUserAnswers(String userID) {
+        SelfAssessmentUserDetails userDetails = programmeFunctions.getUserDetails(userID); 
 
-
-    // public void updateUserSelfAssessment(UUID id, Scanner input) {
-    //     programmeFunctions.update(id, input); 
-    // }
-
-    // public void deleteUser(UUID id) {
-    //      programmeFunctions.delete(id);
-    //  }
-
+        return userDetails.getAnswers();
+    }
         
    
 

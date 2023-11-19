@@ -9,9 +9,10 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.Type;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
-
+import java.util.Map;
 
 import org.springframework.stereotype.Component;
 import org.springframework.util.ResourceUtils;
@@ -54,7 +55,7 @@ public class SelfAssessmentUserProgrammeFunctions {
             return questions; 
         }
 
-        public LinkedList<SelfAssessmentUserDetails> retrieveSelfAssessment() {
+        public LinkedList<SelfAssessmentUserDetails> retrieveSelfAssessments() {
             return userDetailsInput;
         }
     
@@ -62,7 +63,7 @@ public class SelfAssessmentUserProgrammeFunctions {
 
         if (!find(recoUserDetails.getUserID())) {
             userDetailsInput.add(recoUserDetails);
-            writeDataFromSelfAssessmentToFile();
+            writeDataToSelfAssessmentFile();
         }
         else {
             System.out.println("Self Assessment Record already exists");
@@ -104,7 +105,7 @@ public class SelfAssessmentUserProgrammeFunctions {
 
             }
 
-              private void writeDataFromSelfAssessmentToFile() {
+              private void writeDataToSelfAssessmentFile() {
             try(Writer writer = new FileWriter(jsonFilePathUserDetails)){
             gson.toJson(userDetailsInput, writer); 
             } catch (IOException e) {
@@ -116,8 +117,7 @@ public class SelfAssessmentUserProgrammeFunctions {
             for(SelfAssessmentUserDetails user : userDetailsInput) {
         // if userID provided == userID within json file then update the user details
             if (user.getUserID().equals(userID)) {
-                user.setFirstName(userDetails.getFirstName());
-                user.setLastName(userDetails.getLastName());
+                user.setName(userDetails.getName());
                 user.setYearOfBirth(userDetails.getYearOfBirth());
                 user.setContactNumber(userDetails.getContactNumber());
                 user.setAnswer1(userDetails.getAnswer1());
@@ -125,7 +125,7 @@ public class SelfAssessmentUserProgrammeFunctions {
                 user.setAnswer3(userDetails.getAnswer3());
                 user.setAnswer4(userDetails.getAnswer4());
                 user.setAnswer5(userDetails.getAnswer5());
-                writeDataFromSelfAssessmentToFile();
+                writeDataToSelfAssessmentFile();
                 return true;                
                 }
             }  
@@ -140,14 +140,37 @@ public class SelfAssessmentUserProgrammeFunctions {
             SelfAssessmentUserDetails user = iterator.next(); 
             if (user.getUserID().equals(userID)) {
                 iterator.remove();;
-                writeDataFromSelfAssessmentToFile();;
+                writeDataToSelfAssessmentFile();;
                 return true;
             }
         }
         return false;
         }
 
+        public SelfAssessmentUserDetails getUserDetails(String userID) {
+            // Logic to retrieve user details based on userID
+            for (SelfAssessmentUserDetails user : userDetailsInput) {
+                if (user.getUserID().equals(userID)) {
+                    return user;
+                }
+            }
+            return null;
+
         }
+
+        public Map<String, Boolean> getUserAnswers(String userID) {
+        SelfAssessmentUserDetails userDetails = getUserDetails(userID);
+
+        if (userDetails != null) {
+            // Assuming getAnswers returns a Map<String, Boolean>
+            return userDetails.getAnswers();
+        } else {
+            // Handle the case when user details are not found
+            return Collections.emptyMap(); // Or throw an exception
+        }
+    }
+
+    }
     
 
 

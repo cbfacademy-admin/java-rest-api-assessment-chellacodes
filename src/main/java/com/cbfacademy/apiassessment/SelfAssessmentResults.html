@@ -1,0 +1,47 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SelfAssessment Results</title>
+</head>
+<body>
+    <h1>Useful Information based on your answers </h1>
+
+    <!-- JavaScript to dynamically update content based on user answers -->
+    <script>
+        var userAnswers = {
+            answer1: false,
+            answer2: false,
+            answer3: false,
+            answer4: false,
+            answer5: false
+            // ... other answers
+        };
+
+        // Function to generate content based on answers
+        function generateContent(answers) {
+            // Logic to map answers to content
+            // Example: If answer1 is false, show a link
+            if (!answers.answer1) {
+                document.write('<p>Here is a useful link if you need physical care and support: <a href="https://www.gov.uk/apply-needs-assessment-social-services"> Find your local council to access Adult Social Care</a></p>');
+            }
+            if (!answers.answer2) {
+                document.write('<p>Here is a useful link if you are struggling with getting up and down the stairs (You can also try fitting a second stair rail): <a href="https://www.mobilitycompare.co.uk/stairlifts/?show-form=true&msclkid=0cd3dda3797b131283eab8fa099456b0&utm_source=bing&utm_medium=cpc&utm_campaign=Stairlifts%20Generic&utm_term=stairlifts%20uk&utm_content=Core"> Stair lift comparison website</a></p>');
+            }
+            if (!answers.answer3) {
+                document.write('<p>Here is a useful link if you are struggling with accessing your bathing facilities: <a href="https://www.careco.co.uk/bathroom/"> Link to bathroom aids</a></p>');
+            }
+            if (!answers.answer4) {
+                document.write('<p>Here is a useful link if you are struggling with accessing your property in any way: <a href="https://livingmadeeasy.org.uk/dlf-factsheets/adapting-your-home-access-into-and-around-your-home"> How to ensure safe access link</a></p>');
+            } 
+            if (!answers.answer5) {
+                document.write('<p>Here is a useful link if you are struggling with getting on and off your; bed, chair, toilet (Explore the bed rails , raisers and toileting equipment section): <a href="https://www.careco.co.uk/furniture/furniture-accessories/furniture-raisers/">Care Co link</a></p>');
+            }    
+        }
+
+        generateContent(userAnswers);
+    </script>
+</body>
+</html>
