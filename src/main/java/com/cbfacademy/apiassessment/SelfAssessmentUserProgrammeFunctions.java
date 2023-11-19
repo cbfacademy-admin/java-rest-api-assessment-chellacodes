@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.Type;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 
@@ -79,7 +80,7 @@ public class SelfAssessmentUserProgrammeFunctions {
                 Type listType = new TypeToken<LinkedList<Question>>() {
                 }.getType();
                 return gson.fromJson(reader, listType); 
-// if file does not exist returns an empty list
+            // if file does not exist returns an empty list
             } catch (FileNotFoundException e) {
                 return new LinkedList<>(); 
             } catch (IOException e) {
@@ -93,7 +94,7 @@ public class SelfAssessmentUserProgrammeFunctions {
                 Type listType2 = new TypeToken<LinkedList<SelfAssessmentUserDetails>>() {
                 }.getType();
                 return gson.fromJson(reader2, listType2); 
-// if file does not exist returns an empty list
+            // if file does not exist returns an empty list
             } catch (FileNotFoundException e) {
                 return new LinkedList<>(); 
             } catch (IOException e) {
@@ -110,88 +111,46 @@ public class SelfAssessmentUserProgrammeFunctions {
             e.printStackTrace();
             }
         }
+
+        public boolean updateUserDetails(String userID, SelfAssessmentUserDetails userDetails) {
+            for(SelfAssessmentUserDetails user : userDetailsInput) {
+                // Update the user details
+                user.setFirstName(userDetails.getFirstName());
+                user.setLastName(userDetails.getLastName());
+                user.setYearOfBirth(userDetails.getYearOfBirth());
+                user.setContactNumber(userDetails.getContactNumber());
+                user.setAnswer1(userDetails.getAnswer1());
+                user.setAnswer2(userDetails.getAnswer2());
+                user.setAnswer3(userDetails.getAnswer3());
+                user.setAnswer4(userDetails.getAnswer4());
+                user.setAnswer5(userDetails.getAnswer5());
+                writeDataFromSelfAssessmentToFile();
+                return true;                
+                }
+            return false; 
+        
+        }
+
+        public boolean deleteUserDetails(String userID) {
+        // Iterator method allows to iterate over the elements in the userDetailsInput (list), contains there methods within the Iterator Class; hasNext() , next() , remove() to traverse LinkedList
+        Iterator<SelfAssessmentUserDetails> iterator = userDetailsInput.iterator();
+        while (iterator.hasNext()) {
+            SelfAssessmentUserDetails user = iterator.next(); 
+            if (user.getUserID().equals(userID)) {
+                iterator.remove();;
+                writeDataFromSelfAssessmentToFile();;
+                return true;
+            }
+        }
+        return false;
+        }
+
+        }
     
-        // public void delete (UUID recUserID) {
-
-        //     SelfAssessmentUserDetails recordDelete = null; 
-
-        //     for(SelfAssessmentUserDetails l : listOfSelfAssesementInput) {
-        //         if (l.getUserID().equals(recUserID)){
-        //             recordDelete = l; 
-        //         }
-        //     }
-        //     if (recordDelete == null) {
-        //         System.out.println("Invalid userID , please try again");
-        //     } else {
-        //         listOfSelfAssesementInput.remove(recordDelete); 
-        //         System.out.println("Self Assessment User Record Deleted ");
-        //         writeDataFromSelfAssessmentToFile();
-        //     }
-        // }
-
-        // public SelfAssessmentUserDetails findRecord(UUID userID) {
-        //     for (SelfAssessmentUserDetails l : listOfSelfAssesementInput) {
-        //         if (l.getUserID().equals(userID)) {
-        //             return l; 
-        //         }
-        //     }
-        //     return null; 
-        // }
-
-        // public void update (UUID id, Scanner input) {
-        //     if (find(id)) {
-        //         SelfAssessmentUserDetails userRecord = findRecord(id); 
-
-        //         System.out.print("Do you need physical care and support due to difficulties managing with any of the following; personal care, accessing the community, getting in and out of bed, drink and meal prep? "); 
-        //         boolean answer1 = input.nextBoolean(); 
-
-        //         System.out.print("Do you have any difficulties ascending and / or descending the stairs? "); 
-        //         boolean answer2 = input.nextBoolean();
-
-        //         System.out.print("Do you have any difficulties accessing your bathing facilities? "); 
-        //         boolean answer3 = input.nextBoolean();
-
-        //         System.out.print("Do you have difficulties accessing your property?"); 
-        //         boolean answer4 = input.nextBoolean();
-
-        //         System.out.print("What is the your new answer to Question 5?"); 
-        //         boolean answer5 = input.nextBoolean();
-            
-        //         userRecord.setAnswer1(answer1);
-        //         userRecord.setAnswer2(answer2);
-        //         userRecord.setAnswer3(answer3);
-        //         userRecord.setAnswer4(answer4);
-        //         userRecord.setAnswer5(answer5);
-        //         System.out.println("Self Asssessment User Record Updated Succesfully"); 
-        //         writeDataFromSelfAssessmentToFile();
-        //     } else {
-        //         System.out.println("Self assessment user record not found");
-        //     }
-        //     }
-
-        // public void display() {
-        //     if (listOfSelfAssesementInput.isEmpty()) {
-        //         System.out.println("No records found");
-        //     }
-        //     for (SelfAssessmentUserDetails userRecord : listOfSelfAssesementInput) {
-        //         System.out.println(userRecord.toString()); 
-        //     }
-        // }
-
-        // public void displayAsJsonArray(){
-        //     if(SelfAssessmentUserDetails userRecord : listOfSelfAssesementInput) {
-        //         JsonObject jsonRecord = new JsonObject();
-        //         jsonRecord.addProperty(jsonFilePath, jsonFilePath);
-        //     }
-        // }
-
-            
 
 
-          
-    
-}
 
+        
 
 
 

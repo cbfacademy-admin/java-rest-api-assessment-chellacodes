@@ -30,6 +30,15 @@ public class SelfAssessmentServiceForAPI {
          programmeFunctions.add(userDetails);
     }
 
+    public boolean updateUserSelfAssessment(String userID, SelfAssessmentUserDetails userDetails) {
+        return programmeFunctions.updateUserDetails(userID, userDetails);
+    }
+
+    public boolean deleteUserSelfAssessment(String userID) {
+
+        return programmeFunctions.deleteUserDetails(userID);
+    }
+
 
 
     // public void updateUserSelfAssessment(UUID id, Scanner input) {

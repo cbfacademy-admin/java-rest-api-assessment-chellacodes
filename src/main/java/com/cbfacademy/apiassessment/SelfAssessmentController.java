@@ -9,9 +9,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
 // import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 // import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 // import org.springframework.web.bind.annotation.PathVariable;
 // import org.springframework.web.bind.annotation.PostMapping;
@@ -66,7 +69,30 @@ public class SelfAssessmentController {
                 return ResponseEntity.status(HttpStatus.CREATED).body(successMessage);
         }
 
-        
+        @PutMapping("/selfAssessmentData/userDetails/{userID}")
+    public ResponseEntity<String> updateUserDetails(@PathVariable String userID, @RequestBody SelfAssessmentUserDetails userDetails) {
+        boolean updated = selfAssessmentService.updateUserSelfAssessment(userID, userDetails);
+        if (updated) {
+            String successMessage = "Self Assessment updated successfully";
+            return ResponseEntity.ok(successMessage);
+        } else {
+            String errorMessage = "Self Assessment not found for userID: " + userID;
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+        }
+    }
+
+    @DeleteMapping("/selfAssessmentData/userDetails/{userID}")
+    public ResponseEntity<String> deleteUserDetails(@PathVariable String userID) {
+        boolean deleted = selfAssessmentService.deleteUserSelfAssessment(userID);
+        if (deleted) {
+            String successMessage = "Self Assessment deleted successfully";
+            return ResponseEntity.ok(successMessage);
+        } else {
+            String errorMessage = "Self Assessment not found for userID: " + userID;
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+        }
+    }
+
 
 // // sends request to retreive json file with useful information to answers to the questions 
 //     @GetMapping("/selfAssessment")
