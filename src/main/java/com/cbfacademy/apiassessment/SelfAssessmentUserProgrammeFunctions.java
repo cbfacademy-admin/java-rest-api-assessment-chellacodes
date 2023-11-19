@@ -114,7 +114,8 @@ public class SelfAssessmentUserProgrammeFunctions {
 
         public boolean updateUserDetails(String userID, SelfAssessmentUserDetails userDetails) {
             for(SelfAssessmentUserDetails user : userDetailsInput) {
-                // Update the user details
+        // if userID provided == userID within json file then update the user details
+            if (user.getUserID().equals(userID)) {
                 user.setFirstName(userDetails.getFirstName());
                 user.setLastName(userDetails.getLastName());
                 user.setYearOfBirth(userDetails.getYearOfBirth());
@@ -127,8 +128,9 @@ public class SelfAssessmentUserProgrammeFunctions {
                 writeDataFromSelfAssessmentToFile();
                 return true;                
                 }
+            }  
+            // returns false if no match is found after the loop 
             return false; 
-        
         }
 
         public boolean deleteUserDetails(String userID) {
