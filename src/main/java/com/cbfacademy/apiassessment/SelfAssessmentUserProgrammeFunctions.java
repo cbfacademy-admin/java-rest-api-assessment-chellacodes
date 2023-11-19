@@ -88,7 +88,7 @@ public class SelfAssessmentUserProgrammeFunctions {
         }
 
             private LinkedList<SelfAssessmentUserDetails> readUserDetailsDataFromFile() {
-                    try(Reader reader2 = new FileReader(jsonFilePathUserDetails)) {
+                try(Reader reader2 = new FileReader(jsonFilePathUserDetails)) {
                 Type listType2 = new TypeToken<LinkedList<SelfAssessmentUserDetails>>() {
                 }.getType();
                 return gson.fromJson(reader2, listType2); 
@@ -98,51 +98,48 @@ public class SelfAssessmentUserProgrammeFunctions {
             } catch (IOException e) {
                 e.printStackTrace();
                 return new LinkedList<>(); 
-            }
-
-            }
-
-              private void writeDataToSelfAssessmentFile() {
-            try(Writer writer = new FileWriter(jsonFilePathUserDetails)){
-            gson.toJson(userDetailsInput, writer); 
-            } catch (IOException e) {
-            e.printStackTrace();
-            }
-        }
-
-        public boolean updateUserDetails(String userID, SelfAssessmentUserDetails userDetails) {
-            for(SelfAssessmentUserDetails user : userDetailsInput) {
-        // if userID provided == userID within json file then update the user details
-            if (user.getUserID().equals(userID)) {
-                user.setName(userDetails.getName());
-                user.setYearOfBirth(userDetails.getYearOfBirth());
-                user.setContactNumber(userDetails.getContactNumber());
-                user.setAnswer1(userDetails.getAnswer1());
-                user.setAnswer2(userDetails.getAnswer2());
-                user.setAnswer3(userDetails.getAnswer3());
-                user.setAnswer4(userDetails.getAnswer4());
-                user.setAnswer5(userDetails.getAnswer5());
-                writeDataToSelfAssessmentFile();
-                return true;                
                 }
-            }  
-            // returns false if no match is found after the loop 
-            return false; 
-        }
-
-        public boolean deleteUserDetails(String userID) {
-        // Iterator method allows to iterate over the elements in the userDetailsInput (list), contains there methods within the Iterator Class; hasNext() , next() , remove() to traverse LinkedList
-        Iterator<SelfAssessmentUserDetails> iterator = userDetailsInput.iterator();
-        while (iterator.hasNext()) {
-            SelfAssessmentUserDetails user = iterator.next(); 
-            if (user.getUserID().equals(userID)) {
-                iterator.remove();;
-                writeDataToSelfAssessmentFile();;
-                return true;
             }
-        }
-        return false;
-        }
+
+            private void writeDataToSelfAssessmentFile() {
+                try(Writer writer = new FileWriter(jsonFilePathUserDetails)){
+                gson.toJson(userDetailsInput, writer); 
+                } catch (IOException e) {
+                e.printStackTrace();
+                }
+            }
+
+            public boolean updateUserDetails(String userID, SelfAssessmentUserDetails userDetails) {
+                for(SelfAssessmentUserDetails user : userDetailsInput) {
+        // if userID provided == userID within json file then update the user details
+                if (user.getUserID().equals(userID)) {
+                    user.setName(userDetails.getName());
+                    user.setYearOfBirth(userDetails.getYearOfBirth());
+                    user.setContactNumber(userDetails.getContactNumber());
+                    user.setAnswer1(userDetails.getAnswer1());
+                    user.setAnswer2(userDetails.getAnswer2());
+                    user.setAnswer3(userDetails.getAnswer3());
+                    user.setAnswer4(userDetails.getAnswer4());
+                    user.setAnswer5(userDetails.getAnswer5());
+                    writeDataToSelfAssessmentFile();
+                    return true;                
+                    }
+                } return false; 
+            // returns false if no match is found after the loop 
+                }
+
+            public boolean deleteUserDetails(String userID) {
+        // Iterator method allows to iterate over the elements in the userDetailsInput (list), contains there methods within the Iterator Class; hasNext() , next() , remove() to traverse LinkedList
+             Iterator<SelfAssessmentUserDetails> iterator = userDetailsInput.iterator();
+              while (iterator.hasNext()) {
+            SelfAssessmentUserDetails user = iterator.next(); 
+              if (user.getUserID().equals(userID)) {
+                iterator.remove();;
+                writeDataToSelfAssessmentFile();
+                return true;
+                }
+            } return false;
+            }
 
         public SelfAssessmentUserDetails getUserDetails(String userID) {
             // Logic to retrieve user details based on userID
@@ -150,10 +147,8 @@ public class SelfAssessmentUserProgrammeFunctions {
                 if (user.getUserID().equals(userID)) {
                     return user;
                 }
+            } return null;
             }
-            return null;
-
-        }
 
         public Map<String, Boolean> getUserAnswers(String userID) {
         SelfAssessmentUserDetails userDetails = getUserDetails(userID);
