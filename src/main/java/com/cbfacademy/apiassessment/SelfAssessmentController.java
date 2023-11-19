@@ -52,7 +52,7 @@ public class SelfAssessmentController {
          return ResponseEntity.ok(selfAssessment);
          }
 
-        
+// sends request to create a user self assessment following input into body        
         @PostMapping("/selfAssessmentData/addUser")
         public ResponseEntity<String> createUserDetails(@RequestBody SelfAssessmentUserDetails userDetails) {
         selfAssessmentService.createUserSelfAssessment(userDetails);
@@ -60,6 +60,7 @@ public class SelfAssessmentController {
         return ResponseEntity.status(HttpStatus.CREATED).body(successMessage);
         }
 
+// request to update user, takes in param userID , update json file in body 
         @PutMapping("/selfAssessmentData/userDetails/{userID}")
         public ResponseEntity<String> updateUserDetails(@PathVariable String userID, @RequestBody SelfAssessmentUserDetails userDetails) {
         boolean updated = selfAssessmentService.updateUserSelfAssessment(userID, userDetails);
@@ -72,6 +73,7 @@ public class SelfAssessmentController {
         }
     }
 
+// 
         @DeleteMapping("/selfAssessmentData/userDetails/{userID}")
         public ResponseEntity<String> deleteUserDetails(@PathVariable String userID) {
         boolean deleted = selfAssessmentService.deleteUserSelfAssessment(userID);

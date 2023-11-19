@@ -3,15 +3,12 @@ package com.cbfacademy.apiassessment;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-import java.util.UUID;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName(value = "The Self Assessment Methods should ")
+@DisplayName(value = "The Self Assessment User Details class should:")
 public class SelfAssessmentUserDetailsTest {
 
-    UUID testUUID = UUID.randomUUID();
     SelfAssessmentUserDetails userDetails = new SelfAssessmentUserDetails("123", "Jane Doe", 2000, "07590673402", false, false, true, true, true); 
 // Below I am testing the get() method for returning the values; firstName, lastName, yearOfBirth, answer1, answer2, answer3 , answer 4 , answer 5. 
 

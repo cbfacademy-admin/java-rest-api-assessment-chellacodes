@@ -46,9 +46,6 @@ public class SelfAssessmentUserProgrammeFunctions {
         gson = new GsonBuilder().setPrettyPrinting().create(); 
         questions = readDataFromFile();
         userDetailsInput = readUserDetailsDataFromFile();
-
-        
-
         }
 
         public LinkedList<Question> retrieveSelfAssessmentQuestions() {

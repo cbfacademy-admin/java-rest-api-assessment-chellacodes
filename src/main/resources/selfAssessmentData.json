@@ -17,10 +17,10 @@
         "yearOfBirth": 1930, 
         "contactNumber": "111", 
         "answer1": false,
-        "answer2": false,
+        "answer2": true,
         "answer3": false,
-        "answer4": false,
-        "answer5": false
+        "answer4": true,
+        "answer5": true
     }
 ]
 
